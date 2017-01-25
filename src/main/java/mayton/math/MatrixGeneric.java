@@ -6,7 +6,7 @@ import java.util.*;
 
 /**
  *
- *  05.11.2006               MKovalev
+ *  05.11.2006 mayton
  *
  */ 
 

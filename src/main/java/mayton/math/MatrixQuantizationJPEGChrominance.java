@@ -7,7 +7,7 @@ package mayton.math;
  *   when divided by 2, "very good" quality.  (These two settings are
  *   selected by quality=50 and quality=75 respectively.)
  * 
- *   2006.11.05             MKovalev
+ *   2006.11.05 mayton
  *
  */
 
