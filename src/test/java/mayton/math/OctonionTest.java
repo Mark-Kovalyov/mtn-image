@@ -20,25 +20,6 @@ import static org.junit.Assert.*;
  */
 public class OctonionTest {
 
-    public OctonionTest() {
-    }
-
-    @BeforeClass
-    public static void setUpClass() throws Exception {
-    }
-
-    @AfterClass
-    public static void tearDownClass() throws Exception {
-    }
-
-    @Before
-    public void setUp() {
-    }
-
-    @After
-    public void tearDown() {
-    }
-
     @Test
     public void testGetModule() {
         Octonion o1=new Octonion(1.0d,2.0d,3.0d,4.0d,5.0d,4.0d,3.0d,2.0d);

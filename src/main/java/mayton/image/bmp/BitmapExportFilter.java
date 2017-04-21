@@ -113,6 +113,7 @@ public class BitmapExportFilter extends RasterExportFilter {
         int Y = bitmap.getHeight();
         logger.debug("export Begin....");
         //InvertDataOutputStream Dos = new InvertDataOutputStream(Fos);
+        // TODO: Refactot with Apache Swapped* Streams
         DataOutputStream dos = new DataOutputStream(os);
         //BitmapHeader bh=new BitmapHeader(Bitmap.X,Bitmap.Y);
         //bh.writeExternal(new ObjectOutputStream(Fos));

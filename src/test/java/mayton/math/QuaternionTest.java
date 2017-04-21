@@ -6,11 +6,8 @@
 package mayton.math;
 
 import mayton.math.*;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
+
 import static org.junit.Assert.*;
 
 /**
@@ -18,25 +15,6 @@ import static org.junit.Assert.*;
  * @author mayton
  */
 public class QuaternionTest {
-
-    public QuaternionTest() {
-    }
-
-    @BeforeClass
-    public static void setUpClass() throws Exception {
-    }
-
-    @AfterClass
-    public static void tearDownClass() throws Exception {
-    }
-
-    @Before
-    public void setUp() {
-    }
-
-    @After
-    public void tearDown() {
-    }
 
     @Test
     public void testConstructor() {
@@ -58,15 +36,16 @@ public class QuaternionTest {
        assertEquals(q3.d,6.0d,0.0000000001d);
     }
 
+    @Ignore
     @Test
     public void testMul() {
        Quaternion q1=new Quaternion(1.0d,0.0d,0.0d,0.0d);
        Quaternion q2=new Quaternion(2.0d,2.0d,2.0d,2.0d);
        Quaternion q3=Quaternion.mul(q1, q2);
-       //assertEquals(q3.a,1.0d,0.0000000001d);
-       //assertEquals(q3.a,1.0d,0.0000000001d);
-       //assertEquals(q3.a,1.0d,0.0000000001d);
-       //assertEquals(q3.a,1.0d,0.0000000001d);
+       assertEquals(q3.a,1.0d,0.0000000001d);
+       assertEquals(q3.b,1.0d,0.0000000001d);
+       assertEquals(q3.c,1.0d,0.0000000001d);
+       assertEquals(q3.d,1.0d,0.0000000001d);
     }
 
     public void testModule()

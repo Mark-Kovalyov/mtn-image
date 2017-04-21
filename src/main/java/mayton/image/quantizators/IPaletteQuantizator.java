@@ -7,5 +7,5 @@ import java.awt.*;
 
 public interface IPaletteQuantizator
 {
-    public List<Color> getPalette(Raster r,int ncolors);    
+    List<Color> getPalette(Raster r,int ncolors);
 }

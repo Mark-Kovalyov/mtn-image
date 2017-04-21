@@ -118,17 +118,14 @@ public class Marble implements IImmutablePixelMatrix {
 
     }
 
-    @Override
     public int getPixel(int x, int y) {
         return 0;
     }
 
-    @Override
     public int getWidth() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    @Override
     public int getHeight() {
         throw new UnsupportedOperationException("Not supported yet.");
     }

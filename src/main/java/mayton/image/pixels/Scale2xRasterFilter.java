@@ -15,9 +15,6 @@ import mayton.image.Raster;
  */
 public class Scale2xRasterFilter extends GenericRasterFilter {
 
-    
-    
-
     @Override
     public int getProgress() {
         throw new UnsupportedOperationException("Not supported yet.");

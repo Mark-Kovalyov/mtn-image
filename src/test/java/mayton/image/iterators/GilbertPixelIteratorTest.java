@@ -13,7 +13,6 @@ public class GilbertPixelIteratorTest {
 
     @Test
     public void testNext4x4() {
-        System.out.println("next");
         GilbertPixelIterator instance = new GilbertPixelIterator(4);
         boolean expResult = false;
         boolean result = instance.next();

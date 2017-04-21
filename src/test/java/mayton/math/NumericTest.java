@@ -19,26 +19,6 @@ import static org.junit.Assert.*;
  */
 public class NumericTest {
 
-    public NumericTest() {
-    }
-
-    @BeforeClass
-    public static void setUpClass() throws Exception {
-    }
-
-    @AfterClass
-    public static void tearDownClass() throws Exception {
-    }
-
-    @Before
-    public void setUp() {
-    }
-
-    @After
-    public void tearDown() {
-    }
-
-
 
     @Test
     public void testFact_int()
@@ -75,10 +55,8 @@ public class NumericTest {
 
         assertEquals("1", Numeric.fact(BigInteger.ZERO).toString());
         assertEquals("1", Numeric.fact(BigInteger.ONE).toString());
-        //System.err.println("2 = "+ (BigInteger.valueOf(2)).toString() );
-                
-        //assertEquals(BigInteger.valueOf(6),  Numeric.fact(BigInteger.valueOf(3)));
-        //assertEquals(BigInteger.valueOf(24), Numeric.fact(BigInteger.valueOf(4)));
+        assertEquals(BigInteger.valueOf(6),  Numeric.fact(BigInteger.valueOf(3)));
+        assertEquals(BigInteger.valueOf(24), Numeric.fact(BigInteger.valueOf(4)));
         assertEquals("120", Numeric.fact(BigInteger.valueOf(5)).toString());
         assertEquals(
                 "815915283247897734345611269596115894272000000000",
