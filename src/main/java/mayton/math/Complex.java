@@ -1,26 +1,33 @@
 package mayton.math;
 
-public class Complex extends Hypercomplex implements Cloneable, Comparable {
+import javax.annotation.Nonnull;
 
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return new Complex(a, b);
-    }
+import static java.lang.Math.atan2;
+import static java.lang.Math.hypot;
+
+public class Complex extends Hypercomplex implements Comparable {
 
     public double a;
     public double b;
 
-    public static Complex sum(Complex arg1, Complex arg2) {
+    @Nonnull
+    public static Complex sum(@Nonnull Complex arg1,@Nonnull Complex arg2) {
         return new Complex(arg1.a + arg2.a, arg1.b + arg2.b);
     }
 
-    public static Complex mul(Complex arg1, Complex arg2) {
-        return new Complex(arg1.a * arg2.a - arg1.b * arg2.b, arg1.a * arg2.b + arg1.b * arg2.a);
+    @Nonnull
+    public static Complex mul(@Nonnull Complex arg1,@Nonnull Complex arg2) {
+        return new Complex(
+                arg1.a * arg2.a - arg1.b * arg2.b,
+                arg1.a * arg2.b + arg1.b * arg2.a);
     }
 
-    public static Complex div(Complex c1, Complex c2) {
+    @Nonnull
+    public static Complex div(@Nonnull Complex c1,@Nonnull Complex c2) {
         double d = c2.a * c2.a + c2.b * c2.b;
-        return new Complex((c1.a * c2.a + c1.b * c2.b) / d, (c1.b * c2.a - c1.a * c2.b) / d);
+        return new Complex(
+                (c1.a * c2.a + c1.b * c2.b) / d,
+                (c1.b * c2.a - c1.a * c2.b) / d);
     }
 
     public Complex(double a, double b) {
@@ -50,23 +57,22 @@ public class Complex extends Hypercomplex implements Cloneable, Comparable {
         b = -b;
     }
 
-    public void add(Complex c) {
+    public void add(@Nonnull Complex c) {
         this.a += c.a;
         this.b += c.b;
     }
 
     public double getArg() {
-        return Math.atan2(b, a);
+        return atan2(b, a);
     }
 
     @Override
     public double getModule() {
-        return Math.hypot(a, b);
+        return hypot(a, b);
     }
 
 
     public int compareTo(Object o) {
-        // TODO: Implement
-        return 0;
+        throw new RuntimeException("Not implemented");
     }
 }

@@ -28,7 +28,7 @@ public class VGA16Palette implements IPalette{
 
     private VGA16Palette()
     {
-        Pal=new ArrayList<Color>();
+        Pal=new ArrayList<>();
         Pal.add(new Color(0x000000));
         Pal.add(new Color(0x0000FF));
         Pal.add(new Color(0x00FF00));

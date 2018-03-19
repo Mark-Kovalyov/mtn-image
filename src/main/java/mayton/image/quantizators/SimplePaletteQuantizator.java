@@ -23,7 +23,7 @@ public class SimplePaletteQuantizator implements IPaletteQuantizator {
 
     public List<Color> getPalette(Raster r,int n) {
         
-        ArrayList<Color> al=new ArrayList<Color>(256);
+        ArrayList<Color> al=new ArrayList<>(256);
         RandomIterator ri=new RandomIterator(r.X, r.Y);
         for(int i=0;i<256;i++)
         {

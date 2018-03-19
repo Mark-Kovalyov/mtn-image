@@ -45,7 +45,7 @@ public class RotateRecursive {
 
 
     public static void recurse(@Nonnull BufferedImage src,@Nonnull BufferedImage dest,@Nonnull Rect rect) throws Exception{
-        assert src.getHeight() == src.getHeight();
+        assert src.getHeight() == dest.getHeight();
         writeRot(src, dest, rect);
         int size = rect.getHeight();
         if (size > 2) {

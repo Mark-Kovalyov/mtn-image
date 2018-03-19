@@ -1,9 +1,13 @@
 package mayton.math;
 
+/**
+ * @deprecated refactor with Iterator
+ */
+@Deprecated
 public interface INumGenerator {
 
-    public void reset();
-    public int getNext();
-    public boolean hasNext();
+    void reset();
+    int getNext();
+    boolean hasNext();
 
 }

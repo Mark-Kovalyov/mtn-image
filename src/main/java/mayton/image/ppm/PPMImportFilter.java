@@ -1,69 +1,68 @@
 package mayton.image.ppm;
 
 import java.io.*;
+
 import mayton.image.*;
 import mayton.image.iterators.*;
 
-public abstract class PPMImportFilter extends RasterExportFilter
-{
-	static final String Digits="0123456789";
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
-	public static String readLexem(BufferedReader Br) throws IOException
-	{		
-		StringBuffer Sb=new StringBuffer();
-		char c;
-		int i;
-		int state=0;
-		while(true)
-		{     
-			i=Br.read();
-			if (i==-1) break;			
-			if (state==0)
-			{
-				if (Digits.indexOf(i)>=0)
-				{
-					Sb.append((char)i);				
-					state=1;
-				}
-			}
-			else
-			{
-				if (Digits.indexOf(i)>=0)
-				{
-					Sb.append((char)i);
-				}
-				else
-				{
-					break;
-				}
-			}			
-		}
-		return Sb.toString();
-	}
+import static java.lang.Integer.parseInt;
 
-	public static Raster from(InputStream Fis) throws IOException
-	{
-	        Raster r=null;
-		InputStreamReader Isr=new InputStreamReader(Fis);
-		BufferedReader Br=new BufferedReader(Isr);
-		String s=readLexem(Br);
-		if (s.compareTo("P3")==-1) return null;
-		int x=Integer.parseInt(readLexem(Br));
-		int y=Integer.parseInt(readLexem(Br));
-		s=readLexem(Br);
-		r=new Raster(x,y);
-		if (s.compareTo("255")==-1) return null;
-		LinearPixIterator Lpi=new LinearPixIterator(x,y);
-		while(Lpi.next())
-		{		
-			r.setPixelRGB(
-				Lpi.getX(),
-				Lpi.getY(),
-				Integer.parseInt(readLexem(Br)),
-				Integer.parseInt(readLexem(Br)),
-				Integer.parseInt(readLexem(Br))
-			);
-		}		
-		return r;
-	}
+public abstract class PPMImportFilter extends RasterExportFilter {
+
+    static final String DIGITS = "0123456789";
+
+    @Nonnull
+    public static String readLexem(@Nonnull BufferedReader br) throws IOException {
+        StringBuilder sb = new StringBuilder();
+        int i;
+        int state = 0;
+        while (true) {
+            i = br.read();
+            if (i == -1) break;
+            if (state == 0) {
+                if (DIGITS.indexOf(i) >= 0) {
+                    sb.append((char) i);
+                    state = 1;
+                }
+            } else {
+                if (DIGITS.indexOf(i) >= 0) {
+                    sb.append((char) i);
+                } else {
+                    break;
+                }
+            }
+        }
+        return sb.toString();
+    }
+
+    @Nullable
+    public static Raster from(@Nonnull InputStream inputStream) throws IOException {
+        InputStreamReader isr = new InputStreamReader(inputStream);
+        BufferedReader br = new BufferedReader(isr);
+        String s = readLexem(br);
+        if (s.compareTo("P3") < 0) {
+            return null;
+        }
+        int x = parseInt(readLexem(br));
+        int y = parseInt(readLexem(br));
+        s = readLexem(br);
+        Raster r = new Raster(x, y);
+        if (s.compareTo("255") < 0) {
+            return null;
+        }
+        LinearPixIterator lpi = new LinearPixIterator(x, y);
+        while (lpi.next()) {
+            r.setPixelRGB(
+                    lpi.getX(),
+                    lpi.getY(),
+                    parseInt(readLexem(br)),
+                    parseInt(readLexem(br)),
+                    parseInt(readLexem(br))
+            );
+        }
+        return r;
+    }
 }

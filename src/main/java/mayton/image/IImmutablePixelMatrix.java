@@ -11,10 +11,10 @@ package mayton.image;
  */
 public interface IImmutablePixelMatrix {
 
-    public int  getPixel(int x,int y);
+    int  getPixel(int x,int y);
 
-    public int  getWidth();
+    int  getWidth();
 
-    public int  getHeight();
+    int  getHeight();
 
 }

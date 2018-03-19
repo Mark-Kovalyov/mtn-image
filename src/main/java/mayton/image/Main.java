@@ -37,7 +37,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         int BORDER = 25;
 
-        String root = "c:/pics/enc/";
+        String root = System.getProperty("user.dir");
         String inputFile  = "exolon.png";
         String outputFile = "exolon-enc.png";
 

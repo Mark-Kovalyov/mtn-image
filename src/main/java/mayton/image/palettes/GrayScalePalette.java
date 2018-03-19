@@ -20,7 +20,7 @@ public class GrayScalePalette implements IPalette{
 
     private GrayScalePalette()
     {
-        Pal=new ArrayList<Color>();
+        Pal=new ArrayList<>();
         for(int i=0;i<256;i++) Pal.add(new Color(i,i,i));
     }
 

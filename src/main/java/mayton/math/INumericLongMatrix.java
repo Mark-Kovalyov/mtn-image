@@ -10,5 +10,7 @@ package mayton.math;
  * @author mayton
  */
 public interface INumericLongMatrix extends ISize {
-    public long get(int x,int y) throws IndexOutOfBoundsException;
+
+    long get(int x,int y) throws IndexOutOfBoundsException;
+
 }

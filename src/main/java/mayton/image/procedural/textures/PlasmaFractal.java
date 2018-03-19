@@ -4,9 +4,9 @@
  */
 package mayton.image.procedural.textures;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
+
+import static java.lang.Math.floor;
 
 /**
  * <h3>Plasma fractals</h3>
@@ -41,15 +41,15 @@ import java.util.Random;
  * <p>
  * <p>Our starting point is the Generate function that return a two-dimensional array of values where each entry in the array corresponds to an xy coordinate and the value is the calculated value, which will be converted into a colour.</p>
  * <p>
- * <p>This function sets the four initial corners, and sets the global variables, and then starts the recursion to generate the rest of the points by calling DivideGrid, which is what follows next. The most import point here is that the array containing the points is passed as a reference variable to DivideGrid, so that as it recurses, it can update the points accordingly.</p>
+ * <p>This function sets the four initial corners, and sets the global variables, and then starts the recursion to generate the rest of the points by calling divideGrid, which is what follows next. The most import point here is that the array containing the points is passed as a reference variable to divideGrid, so that as it recurses, it can update the points accordingly.</p>
  * <p>
  * <p>If the rectangle is bigger than a pixel, then this function now calculates the average for the four edges, as well as the average of all four corners with the displacement added for the centre.</p>
  * <p>
- * <p>After this the values are rectified, so that the values stay within the bounds set, and the DivideGrid function is called again for each new rectangle.</p>
+ * <p>After this the values are rectified, so that the values stay within the bounds set, and the divideGrid function is called again for each new rectangle.</p>
  * <p>
  * <p>If the rectangle is a pixel big, then we have reached the base case, and only the centre is calculated and assigned. At this point the function does not recurse any deeper but now returns.</p>
  * <p>
- * <p>Lastly we just have Rectify and Displace which we have dealt with already. Displace just calcualtes a random displacement based on the size of the rectangle and the roughness.</p>
+ * <p>Lastly we just have rectify and displace which we have dealt with already. displace just calcualtes a random displacement based on the size of the rectangle and the roughness.</p>
  */
 public class PlasmaFractal {
 
@@ -79,32 +79,32 @@ public class PlasmaFractal {
         c4 = rnd.nextDouble();
         gRoughness = iRoughness;
         gBigSize = iWidth + iHeight;
-        DivideGrid(points, 0, 0, iWidth, iHeight, c1, c2, c3, c4);
+        divideGrid(points, 0, 0, iWidth, iHeight, c1, c2, c3, c4);
         return points;
 
     }
 
-    public void DivideGrid(double[][] points, double x, double y, double width, double height, double c1, double c2, double c3, double c4) {
-        double Edge1, Edge2, Edge3, Edge4, Middle;
-        double newWidth = Math.floor(width / 2);
-        double newHeight = Math.floor(height / 2);
+    public void divideGrid(double[][] points, double x, double y, double width, double height, double c1, double c2, double c3, double c4) {
+        double edge1, edge2, edge3, edge4, middle;
+        double newWidth = floor(width / 2);
+        double newHeight = floor(height / 2);
         if (width > 1 || height > 1) {
-            Middle = ((c1 + c2 + c3 + c4) / 4) + Displace(newWidth + newHeight);  //Randomly displace the midpoint!
-            Edge1 = ((c1 + c2) / 2);    //Calculate the edges by averaging the two corners of each edge.
-            Edge2 = ((c2 + c3) / 2);
-            Edge3 = ((c3 + c4) / 2);
-            Edge4 = ((c4 + c1) / 2);//
+            middle = ((c1 + c2 + c3 + c4) / 4) + displace(newWidth + newHeight);  //Randomly displace the midpoint!
+            edge1 = ((c1 + c2) / 2);    //Calculate the edges by averaging the two corners of each edge.
+            edge2 = ((c2 + c3) / 2);
+            edge3 = ((c3 + c4) / 2);
+            edge4 = ((c4 + c1) / 2);//
             //Make sure that the midpoint doesn't accidentally "randomly displaced" past the boundaries!
-            Middle = Rectify(Middle);
-            Edge1 = Rectify(Edge1);
-            Edge2 = Rectify(Edge2);
-            Edge3 = Rectify(Edge3);
-            Edge4 = Rectify(Edge4);
+            middle = rectify(middle);
+            edge1 = rectify(edge1);
+            edge2 = rectify(edge2);
+            edge3 = rectify(edge3);
+            edge4 = rectify(edge4);
             //Do the operation over again for each of the four new grids.
-            DivideGrid(points, x, y, newWidth, newHeight, c1, Edge1, Middle, Edge4);
-            DivideGrid(points, x + newWidth, y, width - newWidth, newHeight, Edge1, c2, Edge2, Middle);
-            DivideGrid(points, x + newWidth, y + newHeight, width - newWidth, height - newHeight, Middle, Edge2, c3, Edge3);
-            DivideGrid(points, x, y + newHeight, newWidth, height - newHeight, Edge4, Middle, Edge3, c4);
+            divideGrid(points, x, y, newWidth, newHeight, c1, edge1, middle, edge4);
+            divideGrid(points, x + newWidth, y, width - newWidth, newHeight, edge1, c2, edge2, middle);
+            divideGrid(points, x + newWidth, y + newHeight, width - newWidth, height - newHeight, middle, edge2, c3, edge3);
+            divideGrid(points, x, y + newHeight, newWidth, height - newHeight, edge4, middle, edge3, c4);
         } else //This is the "base case," where each grid piece is less than the size of a pixel.
         {
             //The four corners of the grid piece will be averaged and drawn as a single pixel.
@@ -122,7 +122,7 @@ public class PlasmaFractal {
         }
     }
 
-    private double Rectify(double iNum) {
+    private double rectify(double iNum) {
         if (iNum < 0) {
             iNum = 0;
         } else if (iNum > 1.0) {
@@ -131,7 +131,7 @@ public class PlasmaFractal {
         return iNum;
     }
 
-    private double Displace(double SmallSize) {
+    private double displace(double SmallSize) {
         double Max = SmallSize / gBigSize * gRoughness;
         return (rnd.nextDouble() - 0.5) * Max;
     }

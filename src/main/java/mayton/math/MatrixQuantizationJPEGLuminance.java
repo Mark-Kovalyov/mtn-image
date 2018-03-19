@@ -13,6 +13,7 @@ package mayton.math;
 
 public class MatrixQuantizationJPEGLuminance extends MatrixNumeric{
 
+    // TODO: Refactor with 1-dimension array
     protected static int m[][]={
         {16,  11,  12,  14,  12,  10,  16,  14},
         {13,  14,  18,  17,  16,  19,  24,  40},

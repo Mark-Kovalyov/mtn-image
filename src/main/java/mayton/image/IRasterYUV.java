@@ -10,8 +10,8 @@ package mayton.image;
 
 public interface IRasterYUV {
 
-    public int getPixelY(int x,int y);
-    public int getPixelU(int x,int y);
-    public int getPixelV(int x,int y);
+    int getPixelY(int x,int y);
+    int getPixelU(int x,int y);
+    int getPixelV(int x,int y);
 
 }

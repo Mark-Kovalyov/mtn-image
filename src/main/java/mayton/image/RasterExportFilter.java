@@ -24,37 +24,37 @@ public class RasterExportFilter {
     /**
      * Экспорт в (предположительно) оригинальном 24Bit формате цвета
      *
-     * @param Bitmap
-     * @param Fos
+     * @param bitmap
+     * @param os
      * @return
      * @throws IOException
      */
-    public boolean export(IImmutablePixelMatrix Bitmap, OutputStream Fos) throws IOException {
+    public boolean export(IImmutablePixelMatrix bitmap, OutputStream os) throws IOException {
         return false;
     }
 
     /**
      * Экспорт в (предположительно) 16Bit формате цвета
      *
-     * @param Bitmap
-     * @param Fos
+     * @param bitmap
+     * @param fos
      * @return
      * @throws IOException
      */
-    public boolean export16bit(IImmutablePixelMatrix Bitmap, OutputStream Fos) throws IOException {
+    public boolean export16bit(IImmutablePixelMatrix bitmap, OutputStream fos) throws IOException {
         return false;
     }
 
     /**
      * Экспорт в палитровом формате
      *
-     * @param Bitmap
-     * @param Palette
-     * @param Fos
+     * @param bitmap
+     * @param palette
+     * @param os
      * @return
      * @throws IOException
      */
-    public boolean export(IImmutablePixelMatrix Bitmap, List<Color> Palette, OutputStream Fos) throws IOException {
+    public boolean export(IImmutablePixelMatrix bitmap, List<Color> palette, OutputStream os) throws IOException {
         return false;
     }
 

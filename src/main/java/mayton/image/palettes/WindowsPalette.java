@@ -19,7 +19,7 @@ public class WindowsPalette implements IPalette
 
     private WindowsPalette()
     {
-        Pal=new ArrayList<Color>();
+        Pal=new ArrayList<>();
         Pal.add(new Color(0x000000));
         Pal.add(new Color(0x0000FF));
         Pal.add(new Color(0x00FF00));

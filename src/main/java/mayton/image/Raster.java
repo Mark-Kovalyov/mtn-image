@@ -118,7 +118,9 @@ public class Raster implements IRasterRGB,IPixelMatrix {
         int count = X * Y;
         pixels = new int[count];
         bgColor = 0x000000;
-        for (int i = 0; i < count; i++) pixels[i] = raster.pixels[i];
+        for (int i = 0; i < count; i++) {
+            pixels[i] = raster.pixels[i];
+        }
     }
 
     /**
@@ -134,10 +136,11 @@ public class Raster implements IRasterRGB,IPixelMatrix {
         int count = X * Y;
         pixels = new int[count];
         bgColor = 0x000000;
-        for (int x = 0; x < r.width; x++)
+        for (int x = 0; x < r.width; x++) {
             for (int y = 0; y < r.height; y++) {
                 setPixel(x, y, raster.getPixel(x + r.x, y + r.y));
             }
+        }
     }
 
 
@@ -150,7 +153,9 @@ public class Raster implements IRasterRGB,IPixelMatrix {
         int xmax = min(X, raster.X);
         int ymax = min(Y, raster.Y);
         for (int x = 0; x < xmax; x++) {
-            for (int y = 0; y < ymax; y++) setPixel(x, y, raster.getPixel(x, y));
+            for (int y = 0; y < ymax; y++) {
+                setPixel(x, y, raster.getPixel(x, y));
+            }
         }
     }
 
@@ -164,10 +169,11 @@ public class Raster implements IRasterRGB,IPixelMatrix {
     public void copyFrameIntoPos(Raster sourceRastr, Rectangle sourceFrame, int xpos, int ypos) {
         assert sourceRastr != null;
         assert sourceFrame != null;
-        for (int x = 0; x < sourceFrame.width; x++)
+        for (int x = 0; x < sourceFrame.width; x++) {
             for (int y = 0; y < sourceFrame.height; y++) {
                 setPixel(x + xpos, y + ypos, sourceRastr.getPixel(x + sourceFrame.x, y + sourceFrame.y));
             }
+        }
     }
 
     /**
@@ -369,8 +375,7 @@ public class Raster implements IRasterRGB,IPixelMatrix {
      * @param U
      * @param V
      */
-    public  void setPixelYUVDouble(int x,int y,double Y,double U,double V){
-
+    public  void setPixelYUVDouble(int x,int y,double Y,double U,double V) {
         assert x >= 0;
         assert x < this.X;
         assert y >= 0;
@@ -391,8 +396,7 @@ public class Raster implements IRasterRGB,IPixelMatrix {
       * @param y y-??????????
       * @return double - ??????? ??????? [0..1]
       */
-    public  double getYPixelDouble(int x,int y)
-    {
+    public  double getYPixelDouble(int x,int y) {
         int color=getPixel(x,y);
         return Raster.getYPixelDouble(color);
     }
@@ -415,8 +419,7 @@ public class Raster implements IRasterRGB,IPixelMatrix {
          * @param y y-??????????
          * @return double - V-?????????
          */
-    public double getVPixelDouble(int x,int y)
-    {
+    public double getVPixelDouble(int x,int y) {
         int color=getPixel(x,y);
         return getVPixelDouble(color);
     }
@@ -426,8 +429,7 @@ public class Raster implements IRasterRGB,IPixelMatrix {
      * @param color
      * @return
      */
-    public static double getVPixelDouble(int color)
-    {
+    public static double getVPixelDouble(int color) {
         double res=
              ( 0.615 * (color&0xFF)
               -0.515 * ((color&0xFF0000)>>16)
@@ -442,14 +444,13 @@ public class Raster implements IRasterRGB,IPixelMatrix {
      * @param color
      * @return
      */
-    public static int getVPixel(int color)
-    {
-        int res=(int)
-             (0.615*(color&0xFF)
-            -0.515*((color&0xFF0000)>>16)
-            -0.1*((color&0xFF00)>>8));
-        assert res>-157;
-        assert res<157;
+    public static int getVPixel(int color) {
+        int res = (int)
+                (0.615 * (color & 0xFF)
+               - 0.515 * ((color & 0xFF0000) >> 16)
+                 - 0.1 * ((color & 0xFF00) >> 8));
+        assert res > -157;
+        assert res < 157;
         return res;
     }
 
@@ -460,13 +461,12 @@ public class Raster implements IRasterRGB,IPixelMatrix {
          * @param y 
          * @return double - U-?????????
          */
-    public double getUPixelDouble(int x,int y)
-    {
+    public double getUPixelDouble(int x,int y) {
         int color=getPixel(x,y);
         return (
-            -0.147*(color&0xFF)
-            -0.289*((color&0xFF0000)>>16)
-            +0.436*((color&0xFF00)>>8)+111.18)/222.36;
+                -0.147 * (color & 0xFF)
+               - 0.289 * ((color & 0xFF0000) >> 16)
+               + 0.436 * ((color & 0xFF00) >> 8) + 111.18) / 222.36;
     }
 
     /**
@@ -474,12 +474,11 @@ public class Raster implements IRasterRGB,IPixelMatrix {
      * @param color
      * @return
      */
-    public static double getUPixelDouble(int color)
-    {
+    public static double getUPixelDouble(int color) {
         return (
-            -0.147*(color&0xFF)
-            -0.289*((color&0xFF0000)>>16)
-            +0.436*((color&0xFF00)>>8)+111.18)/222.36;
+                -0.147 * (color & 0xFF)
+               - 0.289 * ((color & 0xFF0000) >> 16)
+               + 0.436 * ((color & 0xFF00) >> 8) + 111.18) / 222.36;
     }
 
 
@@ -489,8 +488,7 @@ public class Raster implements IRasterRGB,IPixelMatrix {
      * @param y
      * @return int
      */
-    public int getPixel(int x,int y)
-    {
+    public int getPixel(int x,int y) {
         assert x >= 0;
         assert x < this.X;
         assert y >= 0;
@@ -505,12 +503,26 @@ public class Raster implements IRasterRGB,IPixelMatrix {
      * @param B
      * @return int
      */
-    public final static int getPixel(int R,int G,int B)
-    {
+    public final static int getPixel(int R,int G,int B) {
         R = min(255, max(0, R));
         G = min(255, max(0, G));
         B = min(255, max(0, B));
         return 0xFF000000 | R << 16 | G << 8 | B;
+    }
+
+    /**
+     * Установить пиксел в формате вектора (R,G,B)
+     * @param R
+     * @param G
+     * @param B
+     * @return int
+     */
+    public final static int getPixel(int R,int G,int B,int A) {
+        R = min(255, max(0, R));
+        G = min(255, max(0, G));
+        B = min(255, max(0, B));
+        A = min(255, max(0, A));
+        return A << 24 | R << 16 | G << 8 | B;
     }
 
     /**
@@ -519,8 +531,7 @@ public class Raster implements IRasterRGB,IPixelMatrix {
      * @param y
      * @param color
      */
-    public void setPixel(int x,int y,int color)
-    {
+    public void setPixel(int x,int y,int color) {
         assert x >= 0;
         assert x < this.X;
         assert y >= 0;
@@ -533,8 +544,7 @@ public class Raster implements IRasterRGB,IPixelMatrix {
      * @param color
      * @return int
      */
-    public final static int getGPixel(int color)
-    {
+    public final static int getGPixel(int color) {
         return (0x0000FF00&color)>>8;
     }
 
@@ -544,8 +554,7 @@ public class Raster implements IRasterRGB,IPixelMatrix {
      * @param y
      * @return int
      */
-    public int getGPixel(int x,int y)
-    {
+    public int getGPixel(int x,int y) {
         int color=getPixel(x,y);
         return Raster.getGPixel(color);
     }
@@ -566,8 +575,7 @@ public class Raster implements IRasterRGB,IPixelMatrix {
      * @param y
      * @return int
      */
-    public int getBPixel(int x,int y)
-    {
+    public int getBPixel(int x,int y) {
         int color=getPixel(x,y);
         return Raster.getBPixel(color);
     }
@@ -577,8 +585,7 @@ public class Raster implements IRasterRGB,IPixelMatrix {
      * @param color
      * @return
      */
-    public final static int getRPixel(int color)
-    {
+    public final static int getRPixel(int color) {
         return (0x00FF0000&color)>>16;
     }
 
@@ -588,8 +595,7 @@ public class Raster implements IRasterRGB,IPixelMatrix {
      * @param y
      * @return
      */
-    public int getRPixel(int x,int y)
-    {
+    public int getRPixel(int x,int y) {
         int color=getPixel(x,y);
         return Raster.getRPixel(color);
     }
@@ -600,8 +606,7 @@ public class Raster implements IRasterRGB,IPixelMatrix {
      * @param y
      * @return
      */
-    public int getUPixel(int x,int y)
-    {
+    public int getUPixel(int x,int y) {
         int color=getPixel(x,y);
         return Raster.getUPixel(color);
     }
@@ -611,8 +616,7 @@ public class Raster implements IRasterRGB,IPixelMatrix {
      * @param color
      * @return
      */
-    public final static int getUPixel(int color)
-    {
+    public final static int getUPixel(int color) {
         int res=(int)
             (-0.147*(color&0xFF)
             -0.289*((color&0xFF0000)>>16)
@@ -628,8 +632,7 @@ public class Raster implements IRasterRGB,IPixelMatrix {
      * @param y
      * @return
      */
-    public int getYPixel(int x,int y)
-    {
+    public int getYPixel(int x,int y) {
         int pixel=getPixel(x,y);
         return Raster.getYPixel(pixel);
     }
@@ -639,8 +642,7 @@ public class Raster implements IRasterRGB,IPixelMatrix {
      * @param pixel
      * @return
      */
-    public final static int getYPixel(int pixel)
-    {
+    public final static int getYPixel(int pixel) {
         int res= (int)(
             0.587*getGPixel(pixel)+
             0.114*getBPixel(pixel)+
@@ -656,8 +658,7 @@ public class Raster implements IRasterRGB,IPixelMatrix {
      * @param color
      * @return
      */
-    public final static String getRGBTextSignature(int color)
-    {
+    public final static String getRGBTextSignature(int color) {
         return "RGB("+Raster.getRPixel(color)+","+Raster.getGPixel(color)+","+Raster.getBPixel(color)+")";
     }
 
@@ -666,8 +667,7 @@ public class Raster implements IRasterRGB,IPixelMatrix {
      * @param color
      * @return
      */
-    public final static String getYUVTextSignature(int color)
-    {
+    public final static String getYUVTextSignature(int color) {
         return "YUV("+Raster.getYPixel(color)+","+Raster.getUPixel(color)+","+Raster.getVPixel(color)+")";
     }
 
@@ -676,8 +676,7 @@ public class Raster implements IRasterRGB,IPixelMatrix {
      * @param color
      * @return
      */
-    public final static String getRGBTextSignatureHex(int color)
-    {
+    public final static String getRGBTextSignatureHex(int color) {
         return Integer.toHexString(0xFFFFFF&color).toUpperCase();
     }
 
@@ -697,8 +696,7 @@ public class Raster implements IRasterRGB,IPixelMatrix {
      * @param color2 - упакованное (RGB)
      * @return
      */
-    public final static double getDistance(int color1,int color2)
-    {
+    public final static double getDistance(int color1,int color2) {
         double rv = RK * (getRPixel(color1) - getRPixel(color2));
         double gv = GK * (getGPixel(color1) - getGPixel(color2));
         double bv = BK * (getBPixel(color1) - getBPixel(color2));
@@ -710,13 +708,12 @@ public class Raster implements IRasterRGB,IPixelMatrix {
      * @return String
      */
     @Override
-    public String toString()
-    {
-        StringBuffer Sb=new StringBuffer("DUMP of ua.dn.mayton.image.Raster:\n");
-        Sb.append("X             = "+X+"\n");
-        Sb.append("Y             = "+Y+"\n");
-        Sb.append("pixels[]      = "+pixels.length+"\n");
-        return Sb.toString();
+    public String toString() {
+        StringBuilder sb=new StringBuilder("DUMP of ua.dn.mayton.image.Raster:\n");
+        sb.append("X             = "+X+"\n");
+        sb.append("Y             = "+Y+"\n");
+        sb.append("pixels[]      = "+pixels.length+"\n");
+        return sb.toString();
     }
 
     /**

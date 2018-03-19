@@ -16,7 +16,7 @@ public class VGAPalette implements IPalette
 
     private VGAPalette()
     {
-        Pal=new ArrayList<Color>();
+        Pal=new ArrayList<>();
 
         int r, g, b;
 

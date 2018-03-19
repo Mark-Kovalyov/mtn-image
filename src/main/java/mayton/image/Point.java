@@ -3,7 +3,7 @@ package mayton.image;
 import jdk.nashorn.internal.ir.annotations.Immutable;
 
 @Immutable
-public class Point {
+public final class Point {
 
     public final int x;
     public final int y;

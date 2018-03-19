@@ -2,13 +2,20 @@ package mayton.math;
 
 import java.math.*;
 
+import static java.math.BigInteger.ONE;
+import static java.math.BigInteger.ZERO;
+
 public class Numeric {
 
+    private Numeric(){
+
+    }
+
     /**
-     * Функция Аккермана. (Нахер нужна - непонятно!)
+     * Acckermann
      *
-     * @param a
-     * @param b
+     * @param m
+     * @param n
      * @return
      */
     public static int akkerman(int m, int n) {
@@ -130,15 +137,15 @@ public class Numeric {
      * @throws IllegalArgumentException
      */
     public static BigInteger factDivision(BigInteger a1, BigInteger a2) throws IllegalArgumentException {
-        if (a1.compareTo(BigInteger.ZERO) < 0) {
+        if (a1.compareTo(ZERO) < 0) {
             throw new IllegalArgumentException();
         }
-        if (a2.compareTo(BigInteger.ZERO) < 0) {
+        if (a2.compareTo(ZERO) < 0) {
             throw new IllegalArgumentException();
         }
         BigInteger mul = new BigInteger(a1.toString());
-        for (BigInteger i = new BigInteger(a1.toString()); i.compareTo(a2) < 0; i.add(BigInteger.ONE)) {
-            mul.multiply(i);
+        for (BigInteger i = new BigInteger(a1.toString()); i.compareTo(a2) < 0; i = i.add(ONE)) {
+            mul = mul.multiply(i);
         }
         return mul;
     }
@@ -151,20 +158,20 @@ public class Numeric {
      * @throws IllegalArgumentException
      */
     public static BigInteger fact(BigInteger x) throws IllegalArgumentException {
-        if (x.compareTo(BigInteger.ZERO) < 0) {
+        if (x.compareTo(ZERO) < 0) {
             throw new IllegalArgumentException();
         }
-        if (x.compareTo(BigInteger.ZERO) == 0) {
-            return BigInteger.ONE;
+        if (x.compareTo(ZERO) == 0) {
+            return ONE;
         }
-        if (x.compareTo(BigInteger.ONE) == 0) {
-            return BigInteger.ONE;
+        if (x.compareTo(ONE) == 0) {
+            return ONE;
         }
-        BigInteger mul = BigInteger.ONE;
-        BigInteger i = BigInteger.ONE;
+        BigInteger mul = ONE;
+        BigInteger i = ONE;
         while (i.compareTo(x) <= 0) {
             mul = mul.multiply(i);
-            i = i.add(BigInteger.ONE);
+            i = i.add(ONE);
         }
         return mul;
     }

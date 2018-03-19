@@ -1,8 +1,8 @@
 package mayton.math;
 
 
-public interface IWriteableMatrixTemplate <conttype> extends IMatrixTemplate<conttype> {
+public interface IWriteableMatrixTemplate<C> extends IMatrixTemplate<C> {
 
-    public void set(int x,int y,conttype v) throws IndexOutOfBoundsException;
+    void set(int x, int y, C v) throws IndexOutOfBoundsException;
 
 }

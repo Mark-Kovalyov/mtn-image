@@ -10,8 +10,8 @@ package mayton.image;
 
 public interface IRasterRGB {
 
-    public int getRPixel(int x,int y);
-    public int getGPixel(int x,int y);
-    public int getBPixel(int x,int y);    
+    int getRPixel(int x,int y);
+    int getGPixel(int x,int y);
+    int getBPixel(int x,int y);
 
 }

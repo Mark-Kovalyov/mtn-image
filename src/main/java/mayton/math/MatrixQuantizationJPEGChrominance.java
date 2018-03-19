@@ -12,8 +12,9 @@ package mayton.math;
  */
 
 
-public class MatrixQuantizationJPEGChrominance extends MatrixNumeric
-{
+public class MatrixQuantizationJPEGChrominance extends MatrixNumeric {
+
+    // TODO: Refactor with 1-dimension arr.
     protected static int m[][]={
         {17,  18,  18,  24,  21,  24,  47,  26},
         {26,  47,  99,  66,  56,  66,  99,  99},

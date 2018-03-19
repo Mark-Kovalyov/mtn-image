@@ -6,8 +6,7 @@
 package mayton.image;
 
 public class Version {
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         System.out.println("Mayton.image library 1.1, 2010.06.20");
     }
 }

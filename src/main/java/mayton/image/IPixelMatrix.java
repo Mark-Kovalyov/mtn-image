@@ -9,6 +9,6 @@ package mayton.image;
  */
 public interface IPixelMatrix extends IImmutablePixelMatrix {
     
-    public void setPixel(int x,int y,int color);
+    void setPixel(int x,int y,int color);
 
 }

@@ -1,5 +1,7 @@
 package mayton.math;
 
+import static java.lang.Math.sqrt;
+
 public class PrimeGeneratorSimple implements INumGenerator {
 
     protected int c = 1;
@@ -12,7 +14,7 @@ public class PrimeGeneratorSimple implements INumGenerator {
         } else {
             while (true) {
                 c += 2;
-                int ub = (int) Math.sqrt((double) c);
+                int ub = (int) sqrt((double) c);
                 boolean isprime = true;
                 for (int i = 2; i <= ub; i++) {
                     if ((c % i) == 0) {
