@@ -4,24 +4,13 @@ import java.math.*;
 
 import static java.math.BigInteger.ONE;
 import static java.math.BigInteger.ZERO;
+import javax.annotation.concurrent.ThreadSafe;
 
+@ThreadSafe
 public class Numeric {
 
     private Numeric(){
 
-    }
-
-    /**
-     * Acckermann
-     *
-     * @param m
-     * @param n
-     * @return
-     */
-    public static int akkerman(int m, int n) {
-        if (m == 0) return n + 1;
-        if ((m > 0) && (n > 0)) return akkerman(m - 1, 1);
-        return akkerman(m - 1, akkerman(m, n - 1));
     }
 
     public static double pow2(double d) {

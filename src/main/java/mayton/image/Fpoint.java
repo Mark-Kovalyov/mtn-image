@@ -3,18 +3,18 @@ package mayton.image;
 import javax.annotation.concurrent.Immutable;
 
 @Immutable
-public final class Point {
+public final class Fpoint {
 
-    public final int x;
-    public final int y;
+    public final double x;
+    public final double y;
 
-    public Point(int x, int y) {
+    public Fpoint(double x, double y) {
         this.x = x;
         this.y = y;
     }
     
     @Override
     public String toString() {
-        return String.format("(%d,%d)", x, y);
+        return String.format("(%f,%f)", x, y);
     }
 }

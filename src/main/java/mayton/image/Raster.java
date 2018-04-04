@@ -433,7 +433,7 @@ public class Raster implements IRasterRGB,IPixelMatrix {
         double res=
              ( 0.615 * (color&0xFF)
               -0.515 * ((color&0xFF0000)>>16)
-              -0.1   * ((color&0xFF00)>>8)+156.825)/313.65;
+              -0.1   * ((color&0xFF00)>>8) + 156.825) / 313.65;
         assert res >= 0.0;
         assert res <= 1.0;
         return res;
@@ -564,8 +564,7 @@ public class Raster implements IRasterRGB,IPixelMatrix {
      * @param color
      * @return
      */
-    public final static int getBPixel(int color)
-    {
+    public final static int getBPixel(int color) {
         return (0x000000FF&color);
     }
 
@@ -659,7 +658,15 @@ public class Raster implements IRasterRGB,IPixelMatrix {
      * @return
      */
     public final static String getRGBTextSignature(int color) {
-        return "RGB("+Raster.getRPixel(color)+","+Raster.getGPixel(color)+","+Raster.getBPixel(color)+")";
+        StringBuilder sb = new StringBuilder();
+        sb.append("(");
+        sb.append(Raster.getRPixel(color));
+        sb.append(",");
+        sb.append(Raster.getGPixel(color));
+        sb.append(",");
+        sb.append(Raster.getBPixel(color));
+        sb.append(")");
+        return sb.toString();
     }
 
     /**
@@ -705,14 +712,15 @@ public class Raster implements IRasterRGB,IPixelMatrix {
 
     /**
      * Получение дампа состояния
+     *
      * @return String
      */
     @Override
     public String toString() {
-        StringBuilder sb=new StringBuilder("DUMP of ua.dn.mayton.image.Raster:\n");
-        sb.append("X             = "+X+"\n");
-        sb.append("Y             = "+Y+"\n");
-        sb.append("pixels[]      = "+pixels.length+"\n");
+        StringBuilder sb = new StringBuilder("Raster : ");
+        sb.append("X = " + X + "\n");
+        sb.append("Y = " + Y + "\n");
+        sb.append("pixels[] = " + pixels.length + "\n");
         return sb.toString();
     }
 

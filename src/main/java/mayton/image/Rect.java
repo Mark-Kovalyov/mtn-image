@@ -22,6 +22,7 @@ public class Rect {
 
     // TODO: Implement
     public static Rect intersect(@Nonnull Rect r1,@Nonnull Rect r2){
+        
         return null;
     }
 
