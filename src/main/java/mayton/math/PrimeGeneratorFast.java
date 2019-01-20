@@ -1,8 +1,10 @@
 package mayton.math;
 
+import java.util.Iterator;
+
 import static java.lang.Math.sqrt;
 
-public class PrimeGeneratorFast implements INumGenerator {
+public class PrimeGeneratorFast implements Iterator<Integer> {
 
     protected final int[] cache;
 
@@ -33,7 +35,15 @@ public class PrimeGeneratorFast implements INumGenerator {
         c = 3;
     }
 
-    public int getNext() {
+
+
+    @Override
+    public boolean hasNext() {
+        return true;
+    }
+
+    @Override
+    public Integer next() {
         c += 2;
         int upbound = (int) sqrt((double) c);
         boolean prime = true;
@@ -44,9 +54,5 @@ public class PrimeGeneratorFast implements INumGenerator {
             }
         }
         return cache[i];
-    }
-
-    public boolean hasNext() {
-        return true;
     }
 }

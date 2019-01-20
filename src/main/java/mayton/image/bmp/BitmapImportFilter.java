@@ -11,6 +11,8 @@ import org.apache.commons.io.input.SwappedDataInputStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.annotation.Nonnull;
+
 /**
  * BitmapImportFilter
  *
@@ -36,64 +38,33 @@ public class BitmapImportFilter extends RasterImportFilter {
         return instance;
     }
 
-
-    /*
-    protected static int getInt(InputStream FIS) throws IOException {
-        int buf = 0;
-        int retval = 0;
-        buf = FIS.read();
-        retval |= buf & 0xFF;
-        buf = FIS.read();
-        retval |= (buf & 0xFF) << 8;
-        buf = FIS.read();
-        retval |= (buf & 0xFF) << 16;
-        buf = FIS.read();
-        retval |= (buf & 0xFF) << 24;
-        return retval;
-    }*/
-
-    /*protected static int getShort(InputStream FIS) throws IOException {
-        int buf = 0;
-        int retval = 0;
-        buf = FIS.read();
-        retval |= buf & 0xFF;
-        buf = FIS.read();
-        retval |= (buf & 0xFF) << 8;
-        return retval;
-    }*/
-
     // TODO: Must be replaced with formula
     protected static int EvenBy4(int i) {
         while ((i % 4) != 0) i++;
         return i;
     }
 
-    // TODO: Not implemented yet!
+
     protected void readColorTable() throws IOException {
         Color RGBQuadTable = new Color(256);
+        // TODO:
         throw new RuntimeException("Not implemented yet!");
     }
 
     // TODO: Must be added Monochrome, 16-color, 256-color palette modes, 16bit RGB color support
     @Override
-    public Raster from(InputStream is) throws IOException {
-        assert is != null;
+    public Raster from(@Nonnull InputStream is) throws IOException {
         logger.debug("from Begin....");
         SwappedDataInputStream sdis=new SwappedDataInputStream(is);
         int buf = 0;
-        //buf = getShort(is);
         buf = sdis.readShort();
         if (buf != BMP_SIGNATURE) {
             logger.error("(1)There is a not BMP signature! Aborted");
             return null;
         }
-        //getInt(is);
         sdis.readInt();
-        //getShort(is);
         sdis.readShort();
-        //getShort(is);
         sdis.readShort();
-        //buf = getInt(is);
         buf = sdis.readInt();
         //  True Color
         if (buf != OFFSET_TRUE_COLOR) {
@@ -101,36 +72,27 @@ public class BitmapImportFilter extends RasterImportFilter {
             return null;
         }
         int X = 0, Y = 0;
-        //getInt(is);
         sdis.readInt();
-        //X = getInt(is);
         X = sdis.readInt();
-        //Y = getInt(is);
         Y = sdis.readInt();
-        logger.debug("size : " + X + " x " + Y);
-        //getShort(is);
+        logger.debug("size : {}x{}", X, Y);
         sdis.readShort();
-        //getShort(is);
         sdis.readShort();
-        //getInt(is);
         sdis.readInt();
-        //getInt(is);
         sdis.readInt();
-        //getInt(is);
         sdis.readInt();
-        //getInt(is);
         sdis.readInt();
-        //getInt(is);
         sdis.readInt();
-        //getInt(is);
         sdis.readInt();
         Raster raster = new Raster(X, Y);
-        int r, g, b;
-        int linebuf_length = EvenBy4(3 * raster.X);
-        byte[] linebuf = new byte[linebuf_length];
+        int r;
+        int g;
+        int b;
+        int linebufLength = EvenBy4(3 * raster.X);
+        byte[] linebuf = new byte[linebufLength];
         for (int y = raster.Y - 1; y >= 0; y--) {
             int count = 0;
-            is.read(linebuf, 0, linebuf_length);
+            is.read(linebuf, 0, linebufLength);
             for (int x = 0; x < raster.X; x++) {
                 b = linebuf[count];
                 g = linebuf[count + 1];

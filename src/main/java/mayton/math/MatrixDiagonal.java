@@ -1,14 +1,5 @@
 package mayton.math;
 
-/**
- * Class: Matrix Diagonal 1.0 (JDK 1.5.x)
- * <p>
- * ������������ �������
- * + �� ���� ������ ������
- * + ��� ��������� ������������ �������
- * + ��� ������� ������ � �������������� ���� �������� ����������
- */
-
 public class MatrixDiagonal extends Matrix implements IWriteableMatrix {
 
     protected double[] diagonalVector;

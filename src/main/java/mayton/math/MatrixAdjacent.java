@@ -1,9 +1,5 @@
 package mayton.math;
 
-/**
- * ���������� ������� ��������� ������ �����. ��� ������ ��������� �������� ������������ ���������.
- */
-
 public class MatrixAdjacent extends Matrix implements IWriteableMatrix
 {
 

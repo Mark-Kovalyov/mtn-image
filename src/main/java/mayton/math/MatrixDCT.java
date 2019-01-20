@@ -9,9 +9,9 @@ import static java.lang.Math.*;
 /**
  * <pre>
  *
- *  DCT   = 1/sqr(N), ���� i=0
+ *  DCT   = 1/sqr(N), if i=0
  *     ij
- *  DCT   = sqr(2/N)*cos[(2j+1)*i*3.14/2N], ���� i > 0
+ *  DCT   = sqr(2/N)*cos[(2j+1)*i*3.14/2N], if i > 0
  *     ij
  *
  *  </pre>

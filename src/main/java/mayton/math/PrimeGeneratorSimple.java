@@ -1,13 +1,16 @@
 package mayton.math;
 
+import java.util.Iterator;
+
 import static java.lang.Math.sqrt;
 
-public class PrimeGeneratorSimple implements INumGenerator {
+public class PrimeGeneratorSimple implements Iterator<Integer> {
 
     protected int c = 1;
     protected int count = 0;
 
-    public int getNext() {
+    @Override
+    public Integer next() {
         if (count == 0) {
             count++;
             return 2;
@@ -29,6 +32,7 @@ public class PrimeGeneratorSimple implements INumGenerator {
         }
     }
 
+    @Override
     public boolean hasNext() {
         return true;
     }

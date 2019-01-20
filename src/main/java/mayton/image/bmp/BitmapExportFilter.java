@@ -182,8 +182,6 @@ public class BitmapExportFilter extends RasterExportFilter {
 
     // TODO: Not tested yet!
     public boolean export16bit(@Nonnull Raster bitmap,@Nonnull OutputStream os) throws IOException {
-        assert bitmap != null : "Argument bitmap cannot be null";
-        assert os != null : "Argument os cannot be null";
         logger.debug("export15bit Begin....");
         for (int x = 0; x < bitmap.X; x++) {
             for (int y = 0; y < bitmap.Y; y++) {
@@ -202,10 +200,7 @@ public class BitmapExportFilter extends RasterExportFilter {
         return true;
     }
 
-    public boolean export(@Nonnull Raster bitmap,@Nonnull java.util.List<Color> palette,@Nonnull OutputStream os) throws IOException {
-        assert bitmap != null : "Argument bitmap cannot be null";
-        assert os != null : "Argument os cannot be null";
-        assert palette != null : "Argument palette cannot be null";
+    public boolean export(@Nonnull Raster bitmap, @Nonnull OutputStream os) throws IOException {
         LittleEndianDataOutputStream leds = new LittleEndianDataOutputStream(os);
         int bfSize = EvenBy4(bitmap.X * 3) * bitmap.Y + 14 + 40;
         int bfOffbits = BitmapImportFilter.OFFSET_TRUE_COLOR;

@@ -1,9 +1,6 @@
 package mayton.image.diffusion;
 
 import mayton.image.Raster;
-import mayton.math.INumericMatrix;
-import java.awt.Color;
-import java.util.List;
 
 /**
  
@@ -44,7 +41,7 @@ public class FloydSteinberg implements IDiffusionAlgorithm {
 
     public Raster processRaster(Raster r) {
         Raster r2=new Raster(r.X, r.Y);
-        
+        // TODO:
         return r2;
     }
 }

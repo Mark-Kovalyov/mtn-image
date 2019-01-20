@@ -1,8 +1,7 @@
 package mayton.image;
 
-import jdk.nashorn.internal.ir.annotations.Immutable;
-
 import javax.annotation.Nonnull;
+import javax.annotation.concurrent.Immutable;
 
 @Immutable
 public class Rect {
@@ -22,18 +21,17 @@ public class Rect {
 
     // TODO: Implement
     public static Rect intersect(@Nonnull Rect r1,@Nonnull Rect r2){
-        
-        return null;
+        throw new RuntimeException("Not implemented yet!");
     }
 
     // TODO: Implement
     public static Rect union(@Nonnull Rect r1,@Nonnull Rect r2){
-        return null;
+        throw new RuntimeException("Not implemented yet!");
     }
 
     // TODO: Implement
     public static boolean isPointInRect(@Nonnull Point point, @Nonnull Rect rect){
-        return false;
+        throw new RuntimeException("Not implemented yet!");
     }
 
     public static @Nonnull Rect createSquare(int x1, int y1,int size){

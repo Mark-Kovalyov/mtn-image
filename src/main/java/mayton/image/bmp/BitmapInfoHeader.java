@@ -81,8 +81,4 @@ public class BitmapInfoHeader implements Serializable {
         return null;
     }
 
-    public String toString(){
-        return String.format("{}");
-    }
-
 }
