@@ -15,17 +15,6 @@ public class StepFrameIterator implements IPixIterator {
 
     LinearPixIterator lpi;
 
-    /**
-     *
-     * @param x1    ����� ������� ����
-     * @param y1    ����� ������� ����
-     * @param x2    ������ ������ ����
-     * @param y2    ������ ������ ����
-     * @param xstep ��� �� �����������
-     * @param ystep ��� �� ���������
-     *
-     */
-
     public StepFrameIterator(int x1,int y1,int x2,int y2,int xstep,int ystep)
     {
 

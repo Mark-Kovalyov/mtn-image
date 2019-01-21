@@ -1,7 +1,6 @@
 /**
- * Date: 07.11.2006 ������ singleton
+ * Date: 07.11.2006 singleton
  */
-
 package mayton.image.jpeg;
 
 import mayton.math.MatrixDCT;

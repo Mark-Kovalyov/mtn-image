@@ -1,13 +1,10 @@
 package mayton.math;
 
 /**
- * Created by IntelliJ IDEA.
- * User: �������������
+ * User: mayton
  * Date: 08.04.2007
  * Time: 19:45:26
- * To change this template use File | Settings | File Templates.
  */
-
 public class MatrixAdapterAvg implements IMatrix {
 
     protected int X;
@@ -30,7 +27,7 @@ public class MatrixAdapterAvg implements IMatrix {
     }
 
     @Override
-    public double get(int x, int y) throws IndexOutOfBoundsException {
+    public double get(int x, int y) {
         assert x < this.X;
         assert y < this.Y;
         assert x >= 0;

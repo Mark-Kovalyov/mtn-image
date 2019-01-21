@@ -7,7 +7,6 @@
  */
 package mayton.image.palettes;
 
-
 import java.awt.Color;
 import java.util.List;
 import java.util.ArrayList;
@@ -20,39 +19,38 @@ public class VGA16Palette implements IPalette{
 
     private static VGA16Palette instance = new VGA16Palette();
 
-    private static List<Color> Pal;
+    private static List<Color> pal;
 
     public static VGA16Palette getInstance() {
         return instance;
     }
 
-    private VGA16Palette()
-    {
-        Pal=new ArrayList<>();
-        Pal.add(new Color(0x000000));
-        Pal.add(new Color(0x0000FF));
-        Pal.add(new Color(0x00FF00));
-        Pal.add(new Color(0x00FFFF));
+    private VGA16Palette() {
+        pal =new ArrayList<>();
+        pal.add(new Color(0x000000));
+        pal.add(new Color(0x0000FF));
+        pal.add(new Color(0x00FF00));
+        pal.add(new Color(0x00FFFF));
 
-        Pal.add(new Color(0xFF0000));
-        Pal.add(new Color(0xFF00FF));
-        Pal.add(new Color(0xFFFF00));
-        Pal.add(new Color(0xFFFFFF));
+        pal.add(new Color(0xFF0000));
+        pal.add(new Color(0xFF00FF));
+        pal.add(new Color(0xFFFF00));
+        pal.add(new Color(0xFFFFFF));
 
-        Pal.add(new Color(0xC0C0C0));
-        Pal.add(new Color(0x000080));
-        Pal.add(new Color(0x008000));
-        Pal.add(new Color(0x008080));
+        pal.add(new Color(0xC0C0C0));
+        pal.add(new Color(0x000080));
+        pal.add(new Color(0x008000));
+        pal.add(new Color(0x008080));
         
-        Pal.add(new Color(0x800000));
-        Pal.add(new Color(0x800080));
-        Pal.add(new Color(0x808000));
-        Pal.add(new Color(0x808080));
+        pal.add(new Color(0x800000));
+        pal.add(new Color(0x800080));
+        pal.add(new Color(0x808000));
+        pal.add(new Color(0x808080));
     }
 
     @Override
     public List<Color> getPalette()
     {
-        return Pal;
+        return pal;
     }
 }

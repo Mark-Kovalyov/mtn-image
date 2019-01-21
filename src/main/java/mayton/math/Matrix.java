@@ -4,52 +4,7 @@ import java.text.DecimalFormat;
 
 /**
  * 05.11.2006  mayton
- * <p>
- * <p>
- * ISize
- * |
- * +- IMatrix
- * |      |
- * |      +- IWriteableMatrix
- * |
- * +- INumericMatrix
- * |      |
- * |      +- IWriteableNumericMatrix
- * |
- * +- IMatrixTemplate <conttype>
- * |
- * +- IWriteableMatrixTemplate <conttype>
- * <p>
- * <p>
- * <p>
- * Object
- * |
- * |
- * +- AdapterMatrixTransp : IMatrix
- * |
- * +- AdapterMatrixTorus : IMatrix
- * |
- * +- Matrix : IMatrix
- * |      |
- * |      +- MatrixAdjacent : IWriteableMatrix
- * |      +- MatrixDiagonal : IWriteableMatrix
- * |      +- MatrixDCT
- * |      +- MatrixDither
- * |      +- MatrixGauss
- * |      +- MatrixGeneric : IWriteableMatrix
- * |
- * |
- * +- MatrixAdapterAvg : IMatrix
- * |
- * +- MatrixNumeric : INumericMatrix
- * |      |
- * |      +- MatrixQuantizationJPEGChrominance
- * |      +- MatrixQuantizationJPEGLuminance
- * |
- * +- MatrixQuantization : INumericMatrix
  */
-
-
 public class Matrix implements IMatrix {
 
     // TODO: Refactor this bullshit with 1-dimension array
@@ -77,7 +32,7 @@ public class Matrix implements IMatrix {
     }
 
     /**
-     * ��������� ���� ������
+     *
      * <p>
      * a(k,n) * b(m,k) = c(m,n)
      * <p>
@@ -87,7 +42,7 @@ public class Matrix implements IMatrix {
      *
      * @param a
      * @param b
-     * @return �����������
+     * @return
      */
     public static Matrix mul(IMatrix a, IMatrix b) {
         assert a.getX() == b.getY();
@@ -103,8 +58,6 @@ public class Matrix implements IMatrix {
     }
 
     /**
-     * ���������� ����� �������
-     *
      * @return rank(A)
      */
     public int rank() {
@@ -112,8 +65,6 @@ public class Matrix implements IMatrix {
     }
 
     /**
-     * ���������� �������� �������
-     *
      * @param A
      * @return (A)^-1
      */

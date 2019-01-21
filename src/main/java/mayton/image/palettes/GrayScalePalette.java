@@ -12,7 +12,7 @@ public class GrayScalePalette implements IPalette{
 
     private static GrayScalePalette ourInstance = new GrayScalePalette();
 
-    private static List<Color> Pal;
+    private static List<Color> pal;
 
     public static GrayScalePalette getInstance() {
         return ourInstance;
@@ -20,12 +20,14 @@ public class GrayScalePalette implements IPalette{
 
     private GrayScalePalette()
     {
-        Pal=new ArrayList<>();
-        for(int i=0;i<256;i++) Pal.add(new Color(i,i,i));
+        pal = new ArrayList<>();
+        for(int i=0;i<256;i++) {
+            pal.add(new Color(i,i,i));
+        }
     }
 
     @Override
     public java.util.List<Color> getPalette() {
-        return Pal;
+        return pal;
     }
 }

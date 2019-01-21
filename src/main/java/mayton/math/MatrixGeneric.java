@@ -1,7 +1,5 @@
 package mayton.math;
 
-import java.lang.Math.*;
-import java.text.*;
 import java.util.*;
 
 /**
@@ -40,12 +38,6 @@ public class MatrixGeneric extends Matrix implements IWriteableMatrix {
         }
     }
 
-    /**
-     * ����������� ��������� ������� ������� size
-     *
-     * @param size
-     */
-
     public MatrixGeneric(int size) {
         assert size > 0;
         this.X = size;
@@ -58,13 +50,6 @@ public class MatrixGeneric extends Matrix implements IWriteableMatrix {
             }
         }
     }
-
-    /**
-     * ����� ����������� �������. ��� ���� ��������������� ������.
-     *
-     * @param X
-     * @param Y
-     */
 
     public MatrixGeneric(int X, int Y) {
         this.X = X;
@@ -112,9 +97,6 @@ public class MatrixGeneric extends Matrix implements IWriteableMatrix {
 
 
     /**
-     * ��������� ������ �� �������� ��������� �������. C����� ������� A, ����������
-     * �� ������� ������� B.
-     * <p>
      * [A]*[B]=[C]
      *
      * @param A

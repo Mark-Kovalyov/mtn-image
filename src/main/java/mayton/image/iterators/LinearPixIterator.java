@@ -4,18 +4,13 @@ import static java.lang.Math.*;
 
 /**
  *
- *  2006-12-12   ������ min, max ���������� � ������ ������������ ����. �������
+ *  2006-12-12
  * 
  */
 
-public class LinearPixIterator implements IPixIterator
-{
+public class LinearPixIterator implements IPixIterator {
 
-    @Override
-    public String toString() {
-        return String.format("x=%d,y=%y",x,y);
-    }
-	protected int x=0;
+    protected int x=0;
 	protected int y=0;
 	protected int x2;
 	protected int y2;
@@ -23,8 +18,7 @@ public class LinearPixIterator implements IPixIterator
 	protected int y1;
 	protected boolean stop;
 
-	public LinearPixIterator(int width,int height)
-	{
+	public LinearPixIterator(int width,int height) {
 		x1=min(0,width);
 		y1=min(0,height);
 		x2=max(0,width);
@@ -32,8 +26,7 @@ public class LinearPixIterator implements IPixIterator
 		reset();
 	}
 
-	public LinearPixIterator(int x1,int y1,int x2,int y2)
-	{
+	public LinearPixIterator(int x1,int y1,int x2,int y2) {
 		this.x1=min(x1,x2);
 		this.y1=min(y1,y2);
 		this.x2=max(x1,x2);
@@ -54,16 +47,14 @@ public class LinearPixIterator implements IPixIterator
 	}
 
     @Override
-	public void reset()
-	{
+	public void reset()	{
 		x=x1-1;
 		y=y1;
 		stop=false;
 	}
 
     @Override
-	public boolean next()
-	{
+	public boolean next() {
 		if (stop) return false;
 		x++;
 		if (x==x2)
@@ -79,5 +70,11 @@ public class LinearPixIterator implements IPixIterator
 		}
 		return true;
 	}
-	
+
+	@Override
+	public String toString() {
+		return String.format("x=%d,y=%y",x,y);
+	}
+
+
 }

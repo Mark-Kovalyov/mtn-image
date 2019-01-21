@@ -38,6 +38,10 @@ public class Rect {
         return new Rect(x1, y1, x1 + size, y1 + size);
     }
 
+    public static @Nonnull Rect create8x8Square(int x1, int y1) {
+        return new Rect(x1, y1, x1 + 8, y1 + 8);
+    }
+
     public Rect(int x1, int y1, int x2, int y2) {
         this.x1 = x1;
         this.y1 = y1;

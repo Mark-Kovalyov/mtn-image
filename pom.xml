@@ -4,7 +4,7 @@
 
     <groupId>mayton</groupId>
     <artifactId>mtn-image</artifactId>
-    <version>1.1-SNAPSHOT</version>
+    <version>1.1</version>
     <build>
         <plugins>
             <plugin>
@@ -77,6 +77,12 @@
             <version>26.0-jre</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.8.1</version>
+        </dependency>
+
     </dependencies>
 
     <reporting>
@@ -96,7 +102,7 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.1</version>                
+                <version>0.8.1</version>
             </plugin>
         </plugins>
     </reporting>

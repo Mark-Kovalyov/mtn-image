@@ -1,6 +1,7 @@
 package mayton.math;
 
-public interface IMatrix extends ISize
-{       
-    double get(int x,int y) throws IndexOutOfBoundsException;
+public interface IMatrix extends ISize {
+
+    double get(int x,int y);
+
 }

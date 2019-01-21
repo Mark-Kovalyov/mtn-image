@@ -766,6 +766,11 @@ public class Raster implements IRasterRGB,IPixelMatrix {
         return Raster.getPixel(r, g, b);
     }
 
+    public static boolean isPixelWhite(int color) {
+        // TODO: Optimize
+        return getVPixelDouble(color) > 0.5;
+    }
+
     public int getWidth() {
         return X;
     }

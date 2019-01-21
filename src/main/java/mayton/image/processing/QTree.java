@@ -1,11 +1,13 @@
 package mayton.image.processing;
 
-/* ��������� �����-��ॢ� ��� �।�⠢����� ���஢�� 梥��� ����ࠦ���� */
+public class QTree<T> {
 
-import java.awt.*;
+    public QTree node0;
+    public QTree node1;
+    public QTree node2;
+    public QTree node3;
 
-public class QTree
-{
+    public T content;
 
 }
 

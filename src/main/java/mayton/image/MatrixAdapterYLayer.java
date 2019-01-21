@@ -24,25 +24,12 @@ public class MatrixAdapterYLayer implements IMatrix {
         return rs.Y;
     }
 
-    public MatrixAdapterYLayer(Raster rs)
-    {
-        assert(rs!=null);
+    public MatrixAdapterYLayer(Raster rs) {
         this.rs=rs;
     }
 
-    /**
-     *
-     * @param x
-     * @param y
-     * @return Y ��������, ������������� � �������� [0..255.0]
-     * @throws IndexOutOfBoundsException
-     */
     @Override
     public double get(int x, int y) throws IndexOutOfBoundsException {
-        assert(x<rs.X);
-        assert(y<rs.Y);
-        assert(x>=0);
-        assert(y>=0);
         return rs.getYPixelDouble(x,y);
     }
 

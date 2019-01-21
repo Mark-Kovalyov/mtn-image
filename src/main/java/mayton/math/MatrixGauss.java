@@ -2,20 +2,15 @@ package mayton.math;
 
 import static java.lang.Math.*;
 
-/**
- * ������� ���������� ������������� ������������ ������
- */
-
 public class MatrixGauss extends Matrix {
 
     protected double sigma = 1.0;
     protected int size;
 
-
     public MatrixGauss(int size) {
         assert (size > 0);
         this.size = size;
-        sigma = (double) (size / 6.0);
+        sigma = (size / 6.0);
     }
 
     public MatrixGauss(double sigma) {

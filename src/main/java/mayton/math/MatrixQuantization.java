@@ -1,11 +1,6 @@
 package mayton.math;
 
-import java.text.DecimalFormat;
 import java.lang.String;
-
-/**
- * ������� ����������� ��� JPEG-��������������
- */
 
 public class MatrixQuantization implements INumericMatrix {
 

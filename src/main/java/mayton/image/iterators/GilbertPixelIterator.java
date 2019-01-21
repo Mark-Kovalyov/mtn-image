@@ -1,6 +1,5 @@
 package mayton.image.iterators;
 
-import mayton.image.*;
 import mayton.math.Utils;
 
 import java.util.*;
