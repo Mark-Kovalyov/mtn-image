@@ -1,24 +1,38 @@
 package mayton.image.iterators;
 
-import mayton.image.iterators.GilbertPixelIterator;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
+import org.apache.log4j.PropertyConfigurator;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import static org.junit.Assert.*;
 
 
 public class GilbertPixelIteratorTest {
 
+    static Logger logger =  LoggerFactory.getLogger(GilbertPixelIteratorTest.class);
+
+    @BeforeClass
+    public static void beforeClass() {
+        PropertyConfigurator.configure(System.getProperty("user.dir") + "/src/test/resources/log4.properties");
+    }
+
     @Test
     public void testNext4x4() {
-        GilbertPixelIterator instance = new GilbertPixelIterator(4);
-        boolean expResult = false;
-        boolean result = instance.next();
-            assertEquals(0, instance.getX());
-            assertEquals(0, instance.getY());
-        instance.next();       
+        logger.info("::1");
+
+        GilbertPixelIterator instance = new GilbertPixelIterator(16);
+
+        while (instance.next()) {
+            // Do nothing
+            int x = instance.getX();
+            int y = instance.getY();
+        }
+
+        logger.info("::3");
+
+
         
     }
 
