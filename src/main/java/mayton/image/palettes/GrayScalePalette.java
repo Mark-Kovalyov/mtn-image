@@ -6,9 +6,10 @@ import java.util.ArrayList;
 
 /**
  * Палитра 256 градаций серого цвета
+ *
  * @author mayton
  */
-public class GrayScalePalette implements IPalette{
+public class GrayScalePalette implements IPalette {
 
     private static GrayScalePalette ourInstance = new GrayScalePalette();
 
@@ -18,16 +19,14 @@ public class GrayScalePalette implements IPalette{
         return ourInstance;
     }
 
-    private GrayScalePalette()
-    {
+    private GrayScalePalette() {
         pal = new ArrayList<>();
-        for(int i=0;i<256;i++) {
-            pal.add(new Color(i,i,i));
+        for (int i = 0; i < 256; i++) {
+            pal.add(new Color(i, i, i));
         }
     }
 
-    @Override
-    public java.util.List<Color> getPalette() {
+    public Iterable<Color> getPalette() {
         return pal;
     }
 }

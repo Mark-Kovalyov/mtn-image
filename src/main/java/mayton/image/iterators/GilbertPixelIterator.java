@@ -4,6 +4,8 @@ import mayton.math.Utils;
 
 import java.util.*;
 
+import static com.google.common.base.Preconditions.checkArgument;
+
 
 /**
  * <pre>
@@ -16,61 +18,28 @@ import java.util.*;
  * @author mayton
  */
 public class GilbertPixelIterator implements IPixIterator {
-    protected int x = 0;
-    protected int y = 0;
-    protected int x1 = 0;
-    protected int y1 = 0;
-    protected boolean stop;
-    protected int size;
-    protected int xv = 0;
-    protected int yv = 1;
-
-    protected Stack StackObj;
-
-    protected int planeCount = 0;
-
-
-    protected int[][] Plane = {
-            {0, 0}, {1, 0}, {1, 1}, {0, 1},
-            {0, 2}, {0, 3}, {1, 3}, {1, 2},
-            {2, 2}, {2, 3}, {3, 3}, {3, 2},
-            {3, 1}, {2, 1}, {2, 0}, {3, 0}
-    };
-
 
     public GilbertPixelIterator(int size) {
-        assert (size >= 4);
-        x1 = 0;
-        y1 = 0;
-        // TODO: Re-check
-        size = Utils.log2up(size); //Utility.extendToPowerOf2(size);
-        reset();
+        checkArgument(size >= 4);
     }
 
-    public GilbertPixelIterator(int x, int y, int size) {
-        assert (size >= 4);
-        this.x1 = x;
-        this.y1 = y;
-        // TODO: Re-check
-        size = Utils.log2up(size);//Utility.extendToPowerOf2(size);
-        reset();
-    }
-
+    @Override
     public int getX() {
-        return x;
+        return 0;
     }
 
+    @Override
     public int getY() {
-        return y;
+        return 0;
     }
 
-    public void reset() {
-        stop = false;
-    }
-
+    @Override
     public boolean next() {
-
         return false;
     }
 
+    @Override
+    public void reset() {
+
+    }
 }

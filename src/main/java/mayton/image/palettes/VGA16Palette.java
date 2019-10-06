@@ -49,7 +49,7 @@ public class VGA16Palette implements IPalette{
     }
 
     @Override
-    public List<Color> getPalette()
+    public Iterable<Color> getPalette()
     {
         return pal;
     }

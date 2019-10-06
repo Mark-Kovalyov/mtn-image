@@ -1,5 +1,6 @@
 package mayton.image.palettes;
 
+import javax.annotation.Nonnull;
 import java.awt.*;
 import java.util.*;
 import java.util.List;
@@ -11,52 +12,50 @@ import java.util.List;
  * Time: 1:14:10
  * To change this template use File | Settings | File Templates.
  */
-public class WindowsPalette implements IPalette
-{
+public class WindowsPalette implements IPalette {
     private static WindowsPalette ourInstance = new WindowsPalette();
 
-    private static List<Color> Pal;
+    private static List<Color> pal;
 
-    private WindowsPalette()
-    {
-        Pal=new ArrayList<>();
-        Pal.add(new Color(0x000000));
-        Pal.add(new Color(0x0000FF));
-        Pal.add(new Color(0x00FF00));
-        Pal.add(new Color(0x00FFFF));
+    private WindowsPalette() {
+        pal = new ArrayList<>();
+        pal.add(new Color(0x000000));
+        pal.add(new Color(0x0000FF));
+        pal.add(new Color(0x00FF00));
+        pal.add(new Color(0x00FFFF));
 
-        Pal.add(new Color(0xFF0000));
-        Pal.add(new Color(0xFF00FF));
-        Pal.add(new Color(0xFFFF00));
-        Pal.add(new Color(0xFFFFFF));
+        pal.add(new Color(0xFF0000));
+        pal.add(new Color(0xFF00FF));
+        pal.add(new Color(0xFFFF00));
+        pal.add(new Color(0xFFFFFF));
 
-        Pal.add(new Color(0xC0C0C0));
-        Pal.add(new Color(0x000080));
-        Pal.add(new Color(0x008000));
-        Pal.add(new Color(0x008080));
+        pal.add(new Color(0xC0C0C0));
+        pal.add(new Color(0x000080));
+        pal.add(new Color(0x008000));
+        pal.add(new Color(0x008080));
 
-        Pal.add(new Color(0x800000));
-        Pal.add(new Color(0x800080));
-        Pal.add(new Color(0x808000));
-        Pal.add(new Color(0x808080));
+        pal.add(new Color(0x800000));
+        pal.add(new Color(0x800080));
+        pal.add(new Color(0x808000));
+        pal.add(new Color(0x808080));
 
 
-        Pal.add(new Color(0xC0DCC0));
-        Pal.add(new Color(0xA6CAF0));
-        Pal.add(new Color(0xFFFBF0));
-        Pal.add(new Color(0xA0A0A4));
+        pal.add(new Color(0xC0DCC0));
+        pal.add(new Color(0xA6CAF0));
+        pal.add(new Color(0xFFFBF0));
+        pal.add(new Color(0xA0A0A4));
 
 
     }
 
     public static WindowsPalette getInstance() {
 
-            return ourInstance;
+        return ourInstance;
     }
 
-    public java.util.List<Color> getPalette() {
-        
-        return Pal;
+    @Nonnull
+    public Iterable<Color> getPalette() {
+        return pal;
     }
 
 }

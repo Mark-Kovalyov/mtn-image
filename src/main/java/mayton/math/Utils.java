@@ -1,10 +1,13 @@
 package mayton.math;
 
+import static com.google.common.base.Preconditions.checkArgument;
+
 public class Utils {
 
     private Utils(){}
 
     public static int clp2(int x){
+        checkArgument(x >= 0);
         x = x - 1;
         x = x | (x>>1);
         x = x | (x>>2);
