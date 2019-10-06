@@ -142,10 +142,15 @@ public class GilbertPixelIterator implements IPixIterator {
             return false;
         } else {
             logger.info("::next()");
+            // TODO: Bug! Should be replaced 'poll' by 'take' with correct timeout and 'poisoned' marker processing. 
+            // :: trying to put : (11,14)                                                                               │"GC Thread#4" os_prio=0 cpu=6.55ms elapsed=80.89s tid=0x00007fdc58005800 nid=0x1a8b runnable
+            //:: trying to put : (11,13)                                                                               │
+            //:: trying to put : (11,12)                                                                               │"GC Thread#5" os_prio=0 cpu=6.56ms elapsed=80.88s tid=0x00007fdc58007000 nid=0x1a8c runnable
+            //:: trying to put : (10,12)                                                                               │
+            //:: trying to put : (10,13)                                                                               │"G1 Main Marker" os_prio=0 cpu=0.24ms elapsed=81.22s tid=0x00007fdc94087800 nid=0x1a76 runnable
+            //:: trying to put : (9,13)
             current = blockingQueue.poll();
             if (current == null) {
-                finished = true;
-            } else if (blockingQueue.equals(poisonedPill)) {
                 finished = true;
             } else {
                 finished = false;

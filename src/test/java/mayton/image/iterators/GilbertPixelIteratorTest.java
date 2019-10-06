@@ -22,7 +22,7 @@ public class GilbertPixelIteratorTest {
     public void testNext4x4() {
         logger.info("::1");
 
-        GilbertPixelIterator instance = new GilbertPixelIterator(16);
+        GilbertPixelIterator instance = new GilbertPixelIterator(1024);
 
         while (instance.next()) {
             // Do nothing
