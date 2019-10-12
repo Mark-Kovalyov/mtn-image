@@ -56,8 +56,8 @@ public class SpiralIteratorTest {
                         break global;
                     }
                 }
-            }        
-            //assertEquals(String.format("%d,%d",xx,yy), ipx.toString());
+            }
+
         }
     }
 

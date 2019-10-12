@@ -1,7 +1,5 @@
 package mayton.image.iterators;
 
-// mayton.image.iterators.GilbertPixelIteratorTest
-
 import mayton.image.Point;
 import mayton.math.Utils;
 import org.slf4j.Logger;
@@ -18,6 +16,13 @@ import static com.google.common.base.Preconditions.checkArgument;
  *  3   2  13  12
  *  4   7   8  11
  *  5   6   9  10
+ *
+ *   	    Throws exception 	Returns special value      Blocks              Times out
+ *   	    ------------------  ----------------------     ----------------    -----------
+ * Insert 	add(e)              offer(e)                   put()               offer(e, time, unit)
+ * Remove 	remove()            poll()                     take()              poll(time, unit)
+ * Examine 	element()           peek()                     <not applicable>    <not applicable>
+ *
  * </pre>
  *
  * @author mayton
@@ -26,11 +31,11 @@ public class GilbertPixelIterator implements IPixIterator {
 
     static Logger logger =  LoggerFactory.getLogger(GilbertPixelIterator.class);
 
-    private BlockingQueue<Point> blockingQueue = new ArrayBlockingQueue<>(256, true);
+    private BlockingQueue<Point> blockingQueue = new ArrayBlockingQueue<>(256, true); // TODO: Refactor with 'disruptor' queue
 
     private Thread worker;
 
-    private int u=1;  // pixel step
+    private int u = 1;
 
     private Point poisonedPill = new Point(Integer.MIN_VALUE, Integer.MIN_VALUE);
 
@@ -91,11 +96,10 @@ public class GilbertPixelIterator implements IPixIterator {
 
     private void safePut(Point point) {
         try {
-            logger.info(":: trying to put : {}", point);
-            blockingQueue.put(point);
+            blockingQueue.put(point); // TODO: Refactor with 'disruptor' queue
         } catch (InterruptedException ex) {
             Thread.currentThread().interrupt();
-            logger.warn("Thread interrupted!");
+            logger.warn("Thread interrupted during put!");
         }
     }
 
@@ -112,12 +116,10 @@ public class GilbertPixelIterator implements IPixIterator {
     }
 
     public GilbertPixelIterator(int size) {
-        checkArgument(size >= 16);
-        logger.info(":: constructor for size = {}", size);
+        checkArgument(size >= 4 , "Impossible to create gilbert gurve less than 4x4 plane!");
         int level = Utils.log2up(size);
-        logger.info(":: level = {}", level);
+        logger.trace(":: level = {}", level);
         worker = new Thread(() -> {
-            logger.info(":: Thread function");
             moveto(0, 0);
             a(level);
             safePut(poisonedPill);
@@ -128,12 +130,14 @@ public class GilbertPixelIterator implements IPixIterator {
 
     @Override
     public int getX() {
-        return finished? 0 : current.x;
+        if (finished) throw new IllegalStateException("Iterator is finished!");
+        return current.x;
     }
 
     @Override
     public int getY() {
-        return finished? 0 : current.y;
+        if (finished) throw new IllegalStateException("Iterator is finished!");
+        return current.y;
     }
 
     @Override
@@ -141,21 +145,15 @@ public class GilbertPixelIterator implements IPixIterator {
         if (finished) {
             return false;
         } else {
-            logger.info("::next()");
-            // TODO: Bug! Should be replaced 'poll' by 'take' with correct timeout and 'poisoned' marker processing. 
-            // :: trying to put : (11,14)                                                                               │"GC Thread#4" os_prio=0 cpu=6.55ms elapsed=80.89s tid=0x00007fdc58005800 nid=0x1a8b runnable
-            //:: trying to put : (11,13)                                                                               │
-            //:: trying to put : (11,12)                                                                               │"GC Thread#5" os_prio=0 cpu=6.56ms elapsed=80.88s tid=0x00007fdc58007000 nid=0x1a8c runnable
-            //:: trying to put : (10,12)                                                                               │
-            //:: trying to put : (10,13)                                                                               │"G1 Main Marker" os_prio=0 cpu=0.24ms elapsed=81.22s tid=0x00007fdc94087800 nid=0x1a76 runnable
-            //:: trying to put : (9,13)
-            current = blockingQueue.poll();
-            if (current == null) {
+            try {
+                current = blockingQueue.take(); // TODO: Refactor with 'disruptor' queue
+                finished = (current == poisonedPill);
+            } catch (InterruptedException ex) {
+                Thread.currentThread().interrupt();
+                logger.warn("Thread interrupted during take!");
                 finished = true;
-            } else {
-                finished = false;
             }
-            return finished;
+            return !finished;
         }
     }
 
