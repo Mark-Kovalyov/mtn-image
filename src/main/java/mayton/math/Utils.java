@@ -1,5 +1,7 @@
 package mayton.math;
 
+import org.jetbrains.annotations.NotNull;
+
 import static com.google.common.base.Preconditions.checkArgument;
 
 public class Utils {
@@ -61,5 +63,18 @@ public class Utils {
         if (x < 1) return 0;
         return 32 - nlz(x - 1);
     }
+
+    public static long ip(@NotNull String ips) throws NumberFormatException {
+        int[] ip = new int[4];
+        String[] parts = ips.split("\\.");
+        for (int i = 0; i < 4; i++) {
+            ip[i] = Integer.parseInt(parts[i]);
+        }
+        return  (long) ip[0] << 24 |
+                (long) ip[1] << 16 |
+                (long) ip[2] << 8 |
+                (long) ip[3] ;
+    }
+
 
 }

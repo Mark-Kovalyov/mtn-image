@@ -35,4 +35,12 @@ public class UtilsTest {
         assertEquals(4, Utils.log2up(9));
     }
 
+    @Test
+    public void ipTest() {
+        assertEquals(0,           Utils.ip("0.0.0.0"));
+        assertEquals(16843009,    Utils.ip("1.1.1.1"));
+        assertEquals(2130706433,  Utils.ip("127.0.0.1"));
+        assertEquals(4294967295L, Utils.ip("255.255.255.255"));
+    }
+
 }

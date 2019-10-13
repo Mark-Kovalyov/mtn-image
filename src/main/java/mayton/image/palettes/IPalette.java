@@ -1,6 +1,6 @@
 package mayton.image.palettes;
 
-import javax.annotation.Nonnull;
+import org.jetbrains.annotations.NotNull;
 import java.awt.Color;
 
 /**
@@ -9,7 +9,7 @@ import java.awt.Color;
  */
 public interface IPalette {
 
-    @Nonnull
+    @NotNull
     Iterable<Color> getPalette();
 
 }

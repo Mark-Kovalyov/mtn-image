@@ -1,11 +1,11 @@
 package mayton.image;
 
-import javax.annotation.Nonnull;
+import org.jetbrains.annotations.NotNull;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
@@ -13,7 +13,7 @@ import static mayton.image.Raster.getYPixelDouble;
 
 public class Main {
 
-    public static void xorByStep(@Nonnull BufferedImage i, int dx, int dy,@Nonnull Rect r){
+    public static void xorByStep(@NotNull BufferedImage i, int dx, int dy, @NotNull Rect r){
         int x1 = r.x1;
         int y1 = r.y1;
         int x2 = r.x2;
@@ -30,7 +30,7 @@ public class Main {
         }
     }
 
-    public static void xorByStep(@Nonnull BufferedImage i, int dx, int dy){
+    public static void xorByStep(@NotNull BufferedImage i, int dx, int dy){
         xorByStep(i,dx,dy,new Rect(0,0,i.getWidth(),i.getHeight()));
     }
 

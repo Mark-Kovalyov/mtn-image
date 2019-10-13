@@ -20,3 +20,10 @@ hs_err_pid*
 target/
 coverage/
 
+# Sensitive
+sensitive.properties
+
+# Images
+*.png
+*.jpg
+*.git

@@ -18,6 +18,14 @@ public class LinearPixIterator implements IPixIterator {
     protected int y1;
     protected boolean stop;
 
+    public LinearPixIterator(int size) {
+        x1 = 0;
+        y1 = 0;
+        x2 = size;
+        y2 = size;
+        reset();
+    }
+
     public LinearPixIterator(int width, int height) {
         x1 = min(0, width);
         y1 = min(0, height);

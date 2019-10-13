@@ -1,5 +1,7 @@
 package mayton.image;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.OutputStream;
 import java.io.IOException;
 import java.awt.Color;
@@ -29,7 +31,7 @@ public class RasterExportFilter {
      * @return
      * @throws IOException
      */
-    public boolean export(IImmutablePixelMatrix bitmap, OutputStream os) throws IOException {
+    public boolean export(@NotNull IImmutablePixelMatrix bitmap,@NotNull OutputStream os) throws IOException {
         return false;
     }
 
@@ -41,7 +43,7 @@ public class RasterExportFilter {
      * @return
      * @throws IOException
      */
-    public boolean export16bit(IImmutablePixelMatrix bitmap, OutputStream fos) throws IOException {
+    public boolean export16bit(@NotNull IImmutablePixelMatrix bitmap,@NotNull OutputStream fos) throws IOException {
         return false;
     }
 
@@ -54,7 +56,7 @@ public class RasterExportFilter {
      * @return
      * @throws IOException
      */
-    public boolean export(IImmutablePixelMatrix bitmap, List<Color> palette, OutputStream os) throws IOException {
+    public boolean export(@NotNull IImmutablePixelMatrix bitmap,@NotNull List<Color> palette,@NotNull OutputStream os) throws IOException {
         return false;
     }
 

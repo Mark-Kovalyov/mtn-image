@@ -4,8 +4,8 @@ import java.io.*;
 
 import mayton.image.*;
 import mayton.image.iterators.*;
+import org.jetbrains.annotations.NotNull;
 
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import static java.lang.Integer.parseInt;
@@ -14,8 +14,8 @@ public abstract class PPMImportFilter extends RasterExportFilter {
 
     static final String DIGITS = "0123456789";
 
-    @Nonnull
-    public static String readLexem(@Nonnull BufferedReader br) throws IOException {
+    @NotNull
+    public static String readLexem(@NotNull BufferedReader br) throws IOException {
         StringBuilder sb = new StringBuilder();
         int i;
         int state = 0;
@@ -39,7 +39,7 @@ public abstract class PPMImportFilter extends RasterExportFilter {
     }
 
     @Nullable
-    public static Raster from(@Nonnull InputStream inputStream) throws IOException {
+    public static Raster from(@NotNull InputStream inputStream) throws IOException {
         InputStreamReader isr = new InputStreamReader(inputStream);
         BufferedReader br = new BufferedReader(isr);
         String s = readLexem(br);

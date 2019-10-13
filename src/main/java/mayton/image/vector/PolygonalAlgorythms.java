@@ -1,10 +1,9 @@
 package mayton.image.vector;
 
-import java.util.Iterator;
 import java.util.List;
-import javax.annotation.Nonnull;
 import javax.annotation.concurrent.ThreadSafe;
 import mayton.image.Fpoint;
+import org.jetbrains.annotations.NotNull;
 
 /**
  *
@@ -15,7 +14,7 @@ public class PolygonalAlgorythms {
 
     private PolygonalAlgorythms(){}
     
-    static boolean isPointIn(@Nonnull Fpoint point,@Nonnull Fpolygon polygon) {
+    static boolean isPointIn(@NotNull Fpoint point, @NotNull Fpolygon polygon) {
         if (!polygon.getBoundingBox().isPointInRect(point)){
             return false;
         } else {
@@ -24,28 +23,28 @@ public class PolygonalAlgorythms {
         }
     }
     
-    static Fpolygon getConvex(@Nonnull List<Fpoint> points) {
+    static Fpolygon getConvex(@NotNull List<Fpoint> points) {
         // TODO:
         return new Fpolygon();
     }
     
-    static FmultyPolygon fromPolygon(@Nonnull Fpolygon polygon) {
+    static FmultyPolygon fromPolygon(@NotNull Fpolygon polygon) {
         // TODO:
         return new FmultyPolygon();
     }
     
-    static FmultyPolygon union(@Nonnull Fpolygon polygon1, @Nonnull Fpolygon polygon2) {
+    static FmultyPolygon union(@NotNull Fpolygon polygon1, @NotNull Fpolygon polygon2) {
         // TODO:
         return new FmultyPolygon();
     } 
     
-    static FmultyPolygon intersect(@Nonnull Fpolygon polygon1, @Nonnull Fpolygon polygon2) {
+    static FmultyPolygon intersect(@NotNull Fpolygon polygon1, @NotNull Fpolygon polygon2) {
         // TODO:
         
         return new FmultyPolygon();
     }
     
-    static FmultyPolygon minus(@Nonnull FmultyPolygon polygon) {
+    static FmultyPolygon minus(@NotNull FmultyPolygon polygon) {
         // TODO:
         return new FmultyPolygon();
     }

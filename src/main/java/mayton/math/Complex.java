@@ -1,6 +1,6 @@
 package mayton.math;
 
-import javax.annotation.Nonnull;
+import org.jetbrains.annotations.NotNull;
 
 import static java.lang.Math.atan2;
 import static java.lang.Math.hypot;
@@ -10,20 +10,20 @@ public class Complex extends Hypercomplex implements Comparable {
     public double a;
     public double b;
 
-    @Nonnull
-    public static Complex sum(@Nonnull Complex arg1,@Nonnull Complex arg2) {
+    @NotNull
+    public static Complex sum(@NotNull Complex arg1,@NotNull Complex arg2) {
         return new Complex(arg1.a + arg2.a, arg1.b + arg2.b);
     }
 
-    @Nonnull
-    public static Complex mul(@Nonnull Complex arg1,@Nonnull Complex arg2) {
+    @NotNull
+    public static Complex mul(@NotNull Complex arg1,@NotNull Complex arg2) {
         return new Complex(
                 arg1.a * arg2.a - arg1.b * arg2.b,
                 arg1.a * arg2.b + arg1.b * arg2.a);
     }
 
-    @Nonnull
-    public static Complex div(@Nonnull Complex c1,@Nonnull Complex c2) {
+    @NotNull
+    public static Complex div(@NotNull Complex c1,@NotNull Complex c2) {
         double d = c2.a * c2.a + c2.b * c2.b;
         return new Complex(
                 (c1.a * c2.a + c1.b * c2.b) / d,
@@ -57,7 +57,7 @@ public class Complex extends Hypercomplex implements Comparable {
         b = -b;
     }
 
-    public void add(@Nonnull Complex c) {
+    public void add(@NotNull Complex c) {
         this.a += c.a;
         this.b += c.b;
     }

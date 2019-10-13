@@ -8,10 +8,9 @@ import java.awt.Color;
 
 import mayton.image.RasterImportFilter;
 import org.apache.commons.io.input.SwappedDataInputStream;
+import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import javax.annotation.Nonnull;
 
 /**
  * BitmapImportFilter
@@ -53,7 +52,7 @@ public class BitmapImportFilter extends RasterImportFilter {
 
     // TODO: Must be added Monochrome, 16-color, 256-color palette modes, 16bit RGB color support
     @Override
-    public Raster from(@Nonnull InputStream is) throws IOException {
+    public Raster from(@NotNull InputStream is) throws IOException {
         logger.debug("from Begin....");
         SwappedDataInputStream sdis=new SwappedDataInputStream(is);
         int buf = 0;

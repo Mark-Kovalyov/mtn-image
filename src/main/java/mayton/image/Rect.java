@@ -1,6 +1,6 @@
 package mayton.image;
 
-import javax.annotation.Nonnull;
+import org.jetbrains.annotations.NotNull;
 import javax.annotation.concurrent.Immutable;
 
 @Immutable
@@ -15,30 +15,31 @@ public class Rect {
         return x >= x1 && x < x2 && y >= y1 && y < y2;
     }
 
-    public boolean isPointInRect(@Nonnull Point point){
+    public boolean isPointInRect(@NotNull Point point){
         return point.x >= x1 && point.x < x2 && point.y >= y1 && point.y < y2;
     }
 
     // TODO: Implement
-    public static Rect intersect(@Nonnull Rect r1,@Nonnull Rect r2){
+    public static Rect intersect(@NotNull Rect r1,@NotNull Rect r2){
         throw new RuntimeException("Not implemented yet!");
     }
 
     // TODO: Implement
-    public static Rect union(@Nonnull Rect r1,@Nonnull Rect r2){
+    @NotNull
+    public static Rect union(@NotNull Rect r1,@NotNull Rect r2){
         throw new RuntimeException("Not implemented yet!");
     }
 
     // TODO: Implement
-    public static boolean isPointInRect(@Nonnull Point point, @Nonnull Rect rect){
+    public static boolean isPointInRect(@NotNull Point point, @NotNull Rect rect){
         throw new RuntimeException("Not implemented yet!");
     }
 
-    public static @Nonnull Rect createSquare(int x1, int y1,int size){
+    public static @NotNull Rect createSquare(int x1, int y1,int size){
         return new Rect(x1, y1, x1 + size, y1 + size);
     }
 
-    public static @Nonnull Rect create8x8Square(int x1, int y1) {
+    public static @NotNull Rect create8x8Square(int x1, int y1) {
         return new Rect(x1, y1, x1 + 8, y1 + 8);
     }
 

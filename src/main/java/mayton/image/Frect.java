@@ -1,6 +1,6 @@
 package mayton.image;
 
-import javax.annotation.Nonnull;
+import org.jetbrains.annotations.NotNull;
 import javax.annotation.concurrent.Immutable;
 
 @Immutable
@@ -15,27 +15,27 @@ public class Frect {
         return x >= x1 && x < x2 && y >= y1 && y < y2;
     }
 
-    public boolean isPointInRect(@Nonnull Fpoint point){
+    public boolean isPointInRect(@NotNull Fpoint point){
         return point.x >= x1 && point.x < x2 && point.y >= y1 && point.y < y2;
     }
 
     // TODO: Implement
-    public static Frect intersect(@Nonnull Frect r1,@Nonnull Frect r2) {
+    public static Frect intersect(@NotNull Frect r1, @NotNull Frect r2) {
         
         return null;
     }
 
     // TODO: Implement
-    public static Frect union(@Nonnull Frect r1,@Nonnull Frect r2){
+    public static Frect union(@NotNull Frect r1,@NotNull Frect r2){
         return null;
     }
 
     // TODO: Implement
-    public static boolean isPointInRect(@Nonnull Fpoint point, @Nonnull Frect rect){
+    public static boolean isPointInRect(@NotNull Fpoint point, @NotNull Frect rect){
         return false;
     }
 
-    public static @Nonnull Frect createSquare(double x1, double y1,double size){
+    public static @NotNull Frect createSquare(double x1, double y1,double size){
         return new Frect(x1, y1, x1 + size, y1 + size);
     }
 

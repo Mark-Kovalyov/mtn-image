@@ -1,25 +1,17 @@
 package mayton.image.YUV;
 
 import mayton.image.Rect;
+import org.jetbrains.annotations.NotNull;
 
-import javax.annotation.Nonnull;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.IOException;
-
-import static java.lang.Math.max;
-import static java.lang.System.out;
-import static mayton.image.Rect.createSquare;
-import static mayton.math.Utils.clp2;
-import static mayton.math.Utils.log2up;
-import static mayton.math.Utils.nlz;
 
 public class RotateRecursive {
 
 
-    public static void writeRot(@Nonnull BufferedImage i1,@Nonnull BufferedImage i2, @Nonnull Rect rect) {
+    public static void writeRot(@NotNull BufferedImage i1, @NotNull BufferedImage i2, @NotNull Rect rect) {
         int half = rect.getWidth()/2;
         long cnt = 0;
         long cntRead = 0;
@@ -44,7 +36,7 @@ public class RotateRecursive {
     }
 
 
-    public static void recurse(@Nonnull BufferedImage src,@Nonnull BufferedImage dest,@Nonnull Rect rect) throws Exception{
+    public static void recurse(@NotNull BufferedImage src,@NotNull BufferedImage dest,@NotNull Rect rect) throws Exception{
         assert src.getHeight() == dest.getHeight();
         writeRot(src, dest, rect);
         int size = rect.getHeight();

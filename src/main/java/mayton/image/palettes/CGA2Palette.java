@@ -1,11 +1,12 @@
 package mayton.image.palettes;
 
-import javax.annotation.Nonnull;
+import org.jetbrains.annotations.NotNull;
+
 import java.awt.*;
 import java.util.Arrays;
 
 public class CGA2Palette implements IPalette {
-    @Nonnull
+    @NotNull
     @Override
     public Iterable<Color> getPalette() {
         return Arrays.asList(

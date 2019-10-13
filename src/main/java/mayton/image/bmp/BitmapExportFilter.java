@@ -6,10 +6,9 @@ import java.util.List;
 
 import com.google.common.io.LittleEndianDataOutputStream;
 import mayton.image.*;
+import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import javax.annotation.Nonnull;
 
 /**
  * Windows Bitmap (BMP) familly export filter
@@ -39,7 +38,7 @@ public class BitmapExportFilter extends RasterExportFilter {
             throw new UnsupportedOperationException("Not supported yet.");
         }
 
-        public void writeExternal(@Nonnull ObjectOutput out) throws IOException {
+        public void writeExternal(@NotNull ObjectOutput out) throws IOException {
             out.writeShort(BitmapImportFilter.BMP_SIGNATURE);
             out.writeInt(bfSize);
             out.writeShort(0x0000);
@@ -113,7 +112,7 @@ public class BitmapExportFilter extends RasterExportFilter {
      * @throws IOException
      */
     @Override
-    public boolean export(@Nonnull IImmutablePixelMatrix bitmap,@Nonnull OutputStream os) throws IOException {
+    public boolean export(@NotNull IImmutablePixelMatrix bitmap,@NotNull OutputStream os) throws IOException {
         
         int X = bitmap.getWidth();
         int Y = bitmap.getHeight();
@@ -168,7 +167,7 @@ public class BitmapExportFilter extends RasterExportFilter {
     }
 
     // TODO: Not implemented yet! Not tested!
-    protected void writePalette(@Nonnull List<Color> palette,@Nonnull OutputStream os) throws IOException {
+    protected void writePalette(@NotNull List<Color> palette,@NotNull OutputStream os) throws IOException {
         os.flush();
         DataOutputStream dos=new DataOutputStream(os);
         for (Color c : palette) {
@@ -181,7 +180,7 @@ public class BitmapExportFilter extends RasterExportFilter {
     }
 
     // TODO: Not tested yet!
-    public boolean export16bit(@Nonnull Raster bitmap,@Nonnull OutputStream os) throws IOException {
+    public boolean export16bit(@NotNull Raster bitmap,@NotNull OutputStream os) throws IOException {
         logger.debug("export15bit Begin....");
         for (int x = 0; x < bitmap.X; x++) {
             for (int y = 0; y < bitmap.Y; y++) {
@@ -200,7 +199,7 @@ public class BitmapExportFilter extends RasterExportFilter {
         return true;
     }
 
-    public boolean export(@Nonnull Raster bitmap, @Nonnull OutputStream os) throws IOException {
+    public boolean export(@NotNull Raster bitmap, @NotNull OutputStream os) throws IOException {
         LittleEndianDataOutputStream leds = new LittleEndianDataOutputStream(os);
         int bfSize = EvenBy4(bitmap.X * 3) * bitmap.Y + 14 + 40;
         int bfOffbits = BitmapImportFilter.OFFSET_TRUE_COLOR;

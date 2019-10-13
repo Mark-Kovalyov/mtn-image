@@ -1,7 +1,7 @@
 package mayton.image.iterators;
 
 import mayton.math.Matrix;
-import mayton.math.MatrixGeneric;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Created by IntelliJ IDEA.
@@ -17,10 +17,8 @@ public class FrequencyPixIterator implements IPixIterator {
     int size;
     int count = 0;
 
-    public void updateMatrix(Matrix m) {
-        if (m == null) {
-            //m=new MatrixGeneric(m.X,m.Y);
-        }
+    public void updateMatrix(@NotNull Matrix m) {
+
     }
 
     public void commit() {

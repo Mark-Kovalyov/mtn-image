@@ -1,6 +1,7 @@
 package mayton.image.palettes;
 
-import javax.annotation.Nonnull;
+import org.jetbrains.annotations.NotNull;
+
 import java.awt.*;
 import java.util.*;
 import java.util.List;
@@ -53,7 +54,7 @@ public class WindowsPalette implements IPalette {
         return ourInstance;
     }
 
-    @Nonnull
+    @NotNull
     public Iterable<Color> getPalette() {
         return pal;
     }

@@ -1,16 +1,11 @@
 package mayton.math;
 
 
-import javax.annotation.Nonnull;
+import org.jetbrains.annotations.NotNull;
 
 import static java.lang.Math.sqrt;
 
-public class Quaternion extends Hypercomplex implements Cloneable, Comparable {
-
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return new Quaternion(a,b,c,d);
-    }
+public class Quaternion extends Hypercomplex implements Comparable {
 
     public double a,b,c,d;
 
@@ -21,7 +16,7 @@ public class Quaternion extends Hypercomplex implements Cloneable, Comparable {
         this.d = d;
     }
 
-    public Quaternion(@Nonnull Quaternion q) {
+    public Quaternion(@NotNull Quaternion q) {
         this.a = q.a;
         this.b = q.b;
         this.c = q.c;
@@ -33,13 +28,13 @@ public class Quaternion extends Hypercomplex implements Cloneable, Comparable {
         return String.format("(%f,%f,%f,%f)", a,b,c,d);
     }
 
-    @Nonnull
-    public static Quaternion sum(@Nonnull Quaternion q1,@Nonnull Quaternion q2) {
+    @NotNull
+    public static Quaternion sum(@NotNull Quaternion q1,@NotNull Quaternion q2) {
         return new Quaternion(q1.a + q2.a, q1.b + q2.b, q1.c + q2.c, q1.d + q2.d);
     }
 
-    @Nonnull
-    public static Quaternion mul(@Nonnull Quaternion q1,@Nonnull Quaternion q2) {
+    @NotNull
+    public static Quaternion mul(@NotNull Quaternion q1,@NotNull Quaternion q2) {
         return new Quaternion(
                 q1.a*q2.a + q1.a*q2.b + q1.a*q2.c + q1.a*q2.d,
                 q1.a*q2.b + q1.b*q2.a + q1.c*q2.d - q1.d*q2.c,
@@ -49,8 +44,8 @@ public class Quaternion extends Hypercomplex implements Cloneable, Comparable {
         
     }
 
-    @Nonnull
-    public Quaternion getNorm(@Nonnull Quaternion q) {
+    @NotNull
+    public Quaternion getNorm(@NotNull Quaternion q) {
         double norm = q.getModule();
         return new Quaternion(q.a / norm, q.b / norm, q.c / norm, q.d / norm);
     }

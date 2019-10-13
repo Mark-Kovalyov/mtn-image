@@ -1,5 +1,7 @@
 package mayton.image;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -10,7 +12,9 @@ import java.io.InputStream;
  * @license     http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License v3
  */
 public class RasterImportFilter {
-    public Raster from(InputStream Fos) throws IOException {
+
+    @NotNull
+    public Raster from(@NotNull InputStream Fos) throws IOException {
         return null;
     }
 }
