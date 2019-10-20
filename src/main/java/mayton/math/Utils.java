@@ -1,6 +1,9 @@
 package mayton.math;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Range;
+
+import java.math.BigInteger;
 
 import static com.google.common.base.Preconditions.checkArgument;
 
@@ -64,7 +67,8 @@ public class Utils {
         return 32 - nlz(x - 1);
     }
 
-    public static long ip(@NotNull String ips) throws NumberFormatException {
+    @Range(from = 0, to = 0xFFFF_FFFF)
+    public static long parseIpV4(@NotNull String ips) throws NumberFormatException {
         int[] ip = new int[4];
         String[] parts = ips.split("\\.");
         for (int i = 0; i < 4; i++) {
@@ -74,6 +78,10 @@ public class Utils {
                 (long) ip[1] << 16 |
                 (long) ip[2] << 8 |
                 (long) ip[3] ;
+    }
+
+    public static BigInteger parseIpV6(@NotNull String ips) throws NumberFormatException {
+        return BigInteger.ZERO;
     }
 
 

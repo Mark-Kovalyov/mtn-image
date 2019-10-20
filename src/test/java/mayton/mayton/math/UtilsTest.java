@@ -37,10 +37,10 @@ public class UtilsTest {
 
     @Test
     public void ipTest() {
-        assertEquals(0,           Utils.ip("0.0.0.0"));
-        assertEquals(16843009,    Utils.ip("1.1.1.1"));
-        assertEquals(2130706433,  Utils.ip("127.0.0.1"));
-        assertEquals(4294967295L, Utils.ip("255.255.255.255"));
+        assertEquals(0,           Utils.parseIpV4("0.0.0.0"));
+        assertEquals(16843009,    Utils.parseIpV4("1.1.1.1"));
+        assertEquals(2130706433,  Utils.parseIpV4("127.0.0.1"));
+        assertEquals(4294967295L, Utils.parseIpV4("255.255.255.255"));
     }
 
 }

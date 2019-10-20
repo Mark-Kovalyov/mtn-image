@@ -4,7 +4,7 @@ import org.jetbrains.annotations.NotNull;
 import javax.annotation.concurrent.Immutable;
 
 @Immutable
-public class Rect {
+public final class Rect {
 
     public final int x1;
     public final int y1;
