@@ -57,4 +57,9 @@ public final class Rect {
     public int getHeight(){
         return y2 - y1;
     }
+
+    @Override
+    public String toString() {
+        return String.format("Rect(%d , %d ; %d , %d)", x1, y1, x2, y2);
+    }
 }
