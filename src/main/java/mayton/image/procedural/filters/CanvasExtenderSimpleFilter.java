@@ -28,7 +28,7 @@ public class CanvasExtenderSimpleFilter extends GenericRasterFilter {
         Raster.copyImageIntoPos(src, dest, bs, bs);
         // Left
         for (int j = bs; j > 0; j--) {
-            for (int i = 1; i < xr - 1; i++) {
+            for (int i = 1; i < yr - 1; i++) {
                 int pixel1 = dest.getRGB(j, i - 1);
                 int pixel2 = dest.getRGB(j, i);
                 int pixel3 = dest.getRGB(j, i + 1);
@@ -39,7 +39,7 @@ public class CanvasExtenderSimpleFilter extends GenericRasterFilter {
 
         // Right
         for (int j = bs + x - 1; j < xr - 1; j++) {
-            for (int i = 1; i < xr - 1; i++) {
+            for (int i = 1; i < yr - 1; i++) {
                 int pixel1 = dest.getRGB(j, i - 1);
                 int pixel2 = dest.getRGB(j, i);
                 int pixel3 = dest.getRGB(j, i + 1);

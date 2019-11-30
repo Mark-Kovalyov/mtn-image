@@ -24,8 +24,8 @@ public class CanvasExtenderSimpleFilterTest {
         params.put("borderSize", 64);
         BufferedImage result = canvasExtenderFilter.doFilter(ImageIO.read(
                 new FileInputStream(
-                        "src/test/resources/Mona-Lisa-crop-512x512.png"
-                        //"src/test/resources/rubens_0.jpg"
+                        //"src/test/resources/Mona-Lisa-crop-512x512.png"
+                        "src/test/resources/rubens_0.jpg"
                 )), params);
 
 
