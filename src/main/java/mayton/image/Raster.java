@@ -1,6 +1,12 @@
 package mayton.image;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Range;
+
 import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
+
+import static com.google.common.base.Preconditions.checkArgument;
 import static java.lang.Math.min;
 import static java.lang.Math.max;
 import static java.lang.Math.sqrt;
@@ -159,19 +165,23 @@ public class Raster implements IRasterRGB,IPixelMatrix {
         }
     }
 
-    /**
-     *
-     * @param sourceRastr
-     * @param sourceFrame
-     * @param xpos
-     * @param ypos
-     */
+    @Deprecated
     public void copyFrameIntoPos(Raster sourceRastr, Rectangle sourceFrame, int xpos, int ypos) {
         assert sourceRastr != null;
         assert sourceFrame != null;
         for (int x = 0; x < sourceFrame.width; x++) {
             for (int y = 0; y < sourceFrame.height; y++) {
                 setPixel(x + xpos, y + ypos, sourceRastr.getPixel(x + sourceFrame.x, y + sourceFrame.y));
+            }
+        }
+    }
+
+    public static void copyImageIntoPos(@NotNull BufferedImage source, @NotNull BufferedImage dest, int xpos, int ypos) {
+        checkArgument(source.getWidth() <= dest.getWidth() + xpos);
+        checkArgument(source.getHeight() <= dest.getHeight() + ypos);
+        for (int y = 0; y < source.getHeight(); y++) {
+            for (int x = 0; x < source.getWidth(); x++) {
+                dest.setRGB(x + xpos, y + ypos, source.getRGB(x, y));
             }
         }
     }
@@ -564,7 +574,7 @@ public class Raster implements IRasterRGB,IPixelMatrix {
      * @param color
      * @return
      */
-    public final static int getBPixel(int color) {
+    public static int getBPixel(int color) {
         return (0x000000FF&color);
     }
 
@@ -584,7 +594,7 @@ public class Raster implements IRasterRGB,IPixelMatrix {
      * @param color
      * @return
      */
-    public final static int getRPixel(int color) {
+    public static int getRPixel(int color) {
         return (0x00FF0000&color)>>16;
     }
 
@@ -764,6 +774,30 @@ public class Raster implements IRasterRGB,IPixelMatrix {
         int g = (int) (Y - 0.396 * U - 0.581 * V);
         int b = (int) (Y + 2.029 * U);
         return Raster.getPixel(r, g, b);
+    }
+
+    /**
+     * Returns average color of 2 pixels without alfa
+     * @param color1
+     * @param color2
+     * @return
+     */
+    public static int avgPixel(int color1, int color2) {
+        return getPixel((getRPixel(color1) + getRPixel(color2)) / 2,
+                        (getGPixel(color1) + getGPixel(color2)) / 2,
+                        (getBPixel(color1) + getBPixel(color2)) / 2);
+    }
+
+    /**
+     * Returns average color of 3 pixels without alfa
+     * @param color1
+     * @param color2
+     * @return
+     */
+    public static int avgPixel(int color1, int color2, int color3) {
+        return getPixel((getRPixel(color1) + getRPixel(color2) + getRPixel(color3)) / 3,
+                        (getGPixel(color1) + getGPixel(color2) + getGPixel(color3)) / 3,
+                        (getBPixel(color1) + getBPixel(color2) + getBPixel(color3)) / 3);
     }
 
     public static boolean isPixelWhite(int color) {

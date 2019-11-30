@@ -13,7 +13,7 @@ import mayton.image.Raster;
  *
  * @author mayton
  */
-public class TestTVUEITRasterFilter extends GenericRasterFilter implements IImmutablePixelMatrix  {
+public class TestTVUEITRasterFilter implements IImmutablePixelMatrix  {
 
     int X,Y;
 
@@ -21,16 +21,6 @@ public class TestTVUEITRasterFilter extends GenericRasterFilter implements IImmu
     {
         this.X=x;
         this.Y=y;
-    }
-
-    @Override
-    public int getProgress() {
-        return 100;
-    }
-
-    @Override
-    public boolean isCached() {
-        return false;
     }
 
     @Override

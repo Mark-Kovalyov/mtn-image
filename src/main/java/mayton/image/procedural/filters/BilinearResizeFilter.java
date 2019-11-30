@@ -12,7 +12,7 @@ import mayton.image.IImmutablePixelMatrix;
  *
  * @author mayton
  */
-public class BilinearResizeFilter extends GenericRasterFilter implements IImmutablePixelMatrix {
+public class BilinearResizeFilter implements IImmutablePixelMatrix {
 
     double scaleFactor;
     int X;
@@ -54,16 +54,6 @@ public class BilinearResizeFilter extends GenericRasterFilter implements IImmuta
     public int getHeight()
     {
         return Y;
-    }
-
-    @Override
-    public int getProgress() {
-        return 100;
-    }
-
-    @Override
-    public boolean isCached() {
-        return false;
     }
 
 }

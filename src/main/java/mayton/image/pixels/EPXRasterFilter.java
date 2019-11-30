@@ -48,7 +48,7 @@ import org.slf4j.LoggerFactory;
  * <p>
  * http://ru.wikipedia.org/wiki/%D0%90%D0%BB%D0%B3%D0%BE%D1%80%D0%B8%D1%82%D0%BC%D1%8B_%D0%BC%D0%B0%D1%81%D1%88%D1%82%D0%B0%D0%B1%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F_%D0%BF%D0%B8%D0%BA%D1%81%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D0%B9_%D0%B3%D1%80%D0%B0%D1%84%D0%B8%D0%BA%D0%B8#EPX.2FScale2x.2FAdvMAME2x
  */
-public class EPXRasterFilter extends GenericRasterFilter {
+public class EPXRasterFilter  {
 
     IImmutablePixelMatrix source;
 
@@ -79,15 +79,6 @@ public class EPXRasterFilter extends GenericRasterFilter {
         return dest;
     }
 
-    @Override
-    public int getProgress() {
-        return 100;
-    }
-
-    @Override
-    public boolean isCached() {
-        return false;
-    }
 
 
 }

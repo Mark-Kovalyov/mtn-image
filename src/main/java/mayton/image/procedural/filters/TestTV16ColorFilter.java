@@ -12,7 +12,7 @@ import mayton.image.IImmutablePixelMatrix;
  *
  * @author mayton
  */
-public class TestTV16ColorFilter extends GenericRasterFilter implements IImmutablePixelMatrix  {
+public class TestTV16ColorFilter implements IImmutablePixelMatrix  {
 
     int X;
     int Y;
@@ -30,16 +30,6 @@ public class TestTV16ColorFilter extends GenericRasterFilter implements IImmutab
         assert(y>=0);
         X=x;
         Y=y;
-    }
-
-    @Override
-    public int getProgress() {
-        return 100;
-    }
-
-    @Override
-    public boolean isCached() {
-        return true;
     }
 
     @Override

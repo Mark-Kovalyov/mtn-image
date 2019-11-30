@@ -7,7 +7,11 @@ package mayton.image.pixels;
 
 import mayton.image.GenericRasterFilter;
 import mayton.image.IImmutablePixelMatrix;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
+import java.awt.image.BufferedImage;
+import java.util.Map;
 
 /**
  *
@@ -15,17 +19,8 @@ import mayton.image.IImmutablePixelMatrix;
  */
 public class Scale3xRasterFilter extends GenericRasterFilter {
 
-    
-    
-
     @Override
-    public int getProgress() {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public BufferedImage doFilter(@NotNull BufferedImage source, @Nullable Map<String, Object> parameters) {
+        return null;
     }
-
-    @Override
-    public boolean isCached() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
 }

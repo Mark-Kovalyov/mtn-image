@@ -9,18 +9,28 @@ import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Properties;
 
 public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        BufferedImage src = ImageIO.read(new FileInputStream("/storage/pics/Da-Vinchi/Mona-Lisa-crop-256x256-bw.png"));
+        Properties properties = new Properties();
+        properties.load(new FileInputStream("sensitive.properties"));
+
+        BufferedImage src = ImageIO.read(new FileInputStream(properties.getProperty("experimental.src")));
+
+        if (src.getWidth() != src.getHeight()) {
+            throw new IllegalStateException(String.format("Unable to process image with different dimensions %d x %d", src.getWidth(), src.getHeight()));
+        }
 
         BufferedImage dest = new BufferedImage(src.getWidth(), src.getHeight(), src.getType());
 
-        IPixIterator iPixIterator = new GilbertPixelIterator(256);
+        int size = src.getWidth();
 
-        IPixIterator destIterator = new LinearPixIterator(256, 256);
+        IPixIterator iPixIterator = new GilbertPixelIterator(size);
+
+        IPixIterator destIterator = new LinearPixIterator(size, size);
 
         while(iPixIterator.next()) {
             destIterator.next();
@@ -30,7 +40,7 @@ public class Main {
             dest.setRGB(destIterator.getX(), destIterator.getY(), pixel);
         }
 
-        ImageIO.write(dest, "PNG", new FileOutputStream("/storage/pics/Da-Vinchi/Mona-Lisa-crop-256x256-bw-out.png"));
+        ImageIO.write(dest, properties.getProperty("experimental.dest.format"), new FileOutputStream(properties.getProperty("experimental.dest")));
 
     }
 

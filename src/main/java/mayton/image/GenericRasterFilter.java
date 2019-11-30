@@ -5,14 +5,19 @@
 
 package mayton.image;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+import java.awt.image.BufferedImage;
+import java.util.Map;
+
 /**
  *
  * @author mayton
  */
-public abstract class GenericRasterFilter {    
+public abstract class GenericRasterFilter {
 
-    public abstract int getProgress();
-
-    public abstract boolean isCached();
+    @NotNull
+    public abstract BufferedImage doFilter(@NotNull BufferedImage source, @Nullable Map<String, Object> parameters);
 
 }
