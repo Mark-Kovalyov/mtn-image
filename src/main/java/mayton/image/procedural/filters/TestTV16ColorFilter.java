@@ -5,7 +5,6 @@
 
 package mayton.image.procedural.filters;
 
-import mayton.image.GenericRasterFilter;
 import mayton.image.IImmutablePixelMatrix;
 
 /**

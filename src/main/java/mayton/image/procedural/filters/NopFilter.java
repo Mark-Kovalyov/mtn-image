@@ -9,16 +9,16 @@ import java.awt.image.BufferedImage;
 import java.util.Collections;
 import java.util.Map;
 
-public class MatrixFilter extends GenericRasterFilter {
+public class NopFilter extends GenericRasterFilter {
 
     @Override
     public @NotNull BufferedImage doFilter(@NotNull BufferedImage source, @Nullable Map<String, Object> parameters) {
-        return new BufferedImage(1,1,BufferedImage.TYPE_INT_ARGB);
+        // TODO: make copy
+        return source;
     }
 
     @Override
     public @NotNull Map<String, Pair<Class, Mandatority>> describeParameters() {
-        // TODO:
         return Collections.emptyMap();
     }
 }

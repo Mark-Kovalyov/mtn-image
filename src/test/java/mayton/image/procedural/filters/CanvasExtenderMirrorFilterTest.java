@@ -16,16 +16,16 @@ import java.util.Map;
 
 import static org.junit.Assert.assertNotNull;
 
-public class CanvasExtenderSimpleFilterTest {
+public class CanvasExtenderMirrorFilterTest {
 
     @Test
     public void test() throws IOException {
-        GenericRasterFilter canvasExtenderFilter = new CanvasExtenderSimpleFilter();
+        GenericRasterFilter canvasExtenderFilter = new CanvasExtenderMirrorFilter();
         Map<String, Object> params = new HashMap<>();
         params.put("borderSize", 64);
         BufferedImage result = canvasExtenderFilter.doFilter(ImageIO.read(
                 new FileInputStream(
-                        "src/test/resources/rubens_0.jpg"
+                        "src/test/resources/rubens_850.jpg"
                 )), params);
 
 
@@ -35,12 +35,10 @@ public class CanvasExtenderSimpleFilterTest {
 
         ImageIO.write(result, "PNG",
                 new FileOutputStream(tempDir +
-                    "/crop-canvas-ext-filter-" +
-                    (dateFormat.format(new Date()) + ".png")
+                        "/mirror-canvas-ext-filter-" +
+                        (dateFormat.format(new Date()) + ".png")
                 )
         );
     }
-
-
 
 }

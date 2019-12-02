@@ -1,12 +1,14 @@
 package mayton.image.procedural.filters;
 import mayton.image.GenericRasterFilter;
 import mayton.image.Raster;
+import org.apache.commons.lang3.tuple.Pair;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.awt.image.BufferedImage;
+import java.util.Collections;
 import java.util.Map;
 
 import static com.google.common.base.Preconditions.checkArgument;
@@ -73,6 +75,12 @@ public class CanvasExtenderSimpleFilter extends GenericRasterFilter {
 
         // TODO: Implement all border directions
         return dest;
+    }
+
+    @Override
+    public @NotNull Map<String, Pair<Class, Mandatority>> describeParameters() {
+        // TODO:
+        return Collections.emptyMap();
     }
 
 }

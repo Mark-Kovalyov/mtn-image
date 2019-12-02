@@ -16,17 +16,17 @@ import java.util.Map;
 
 import static org.junit.Assert.assertNotNull;
 
-public class CanvasExtenderSimpleFilterTest {
+public class DecomposeYUVFilterTest {
 
     @Test
     public void test() throws IOException {
-        GenericRasterFilter canvasExtenderFilter = new CanvasExtenderSimpleFilter();
-        Map<String, Object> params = new HashMap<>();
-        params.put("borderSize", 64);
+        GenericRasterFilter canvasExtenderFilter = new DecomposeYUVFilter();
+        Map<String, Object> map = new HashMap<>();
+        map.put("showLegend", true);
         BufferedImage result = canvasExtenderFilter.doFilter(ImageIO.read(
                 new FileInputStream(
-                        "src/test/resources/rubens_0.jpg"
-                )), params);
+                        "src/test/resources/rubens_850.jpg"
+                )), null);
 
 
         assertNotNull(result);
@@ -35,12 +35,10 @@ public class CanvasExtenderSimpleFilterTest {
 
         ImageIO.write(result, "PNG",
                 new FileOutputStream(tempDir +
-                    "/crop-canvas-ext-filter-" +
-                    (dateFormat.format(new Date()) + ".png")
+                        "/decompose-yuv-filter-" +
+                        (dateFormat.format(new Date()) + ".png")
                 )
         );
     }
-
-
 
 }
