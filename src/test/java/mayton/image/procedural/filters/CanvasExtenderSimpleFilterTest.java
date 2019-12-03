@@ -4,6 +4,7 @@ import mayton.image.GenericRasterFilter;
 import org.junit.Test;
 
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -23,9 +24,10 @@ public class CanvasExtenderSimpleFilterTest {
         GenericRasterFilter canvasExtenderFilter = new CanvasExtenderSimpleFilter();
         Map<String, Object> params = new HashMap<>();
         params.put("borderSize", 64);
+
         BufferedImage result = canvasExtenderFilter.doFilter(ImageIO.read(
                 new FileInputStream(
-                        "src/test/resources/rubens_0.jpg"
+                        "/home/mayton/git/mtn-image/src/test/resources/color-bars-600.png"
                 )), params);
 
 
