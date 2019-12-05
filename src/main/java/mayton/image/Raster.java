@@ -3,7 +3,7 @@ package mayton.image;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Range;
 
-import java.awt.Rectangle;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 
 import static com.google.common.base.Preconditions.checkArgument;
@@ -184,6 +184,11 @@ public class Raster implements IRasterRGB,IPixelMatrix {
                 dest.setRGB(x + xpos, y + ypos, source.getRGB(x, y));
             }
         }
+    }
+
+    public static void copyImageIntoRectWithScaling(@NotNull BufferedImage source, @NotNull BufferedImage dest, @NotNull Rect rect) {
+        Graphics2D graphics2D = (Graphics2D) dest.getGraphics();
+
     }
 
     /**
@@ -507,16 +512,30 @@ public class Raster implements IRasterRGB,IPixelMatrix {
     }
 
     /**
-     * Установить пиксел в формате вектора (R,G,B)
+     * Get compozite RGB triplet from integer vector (int,int,int)
      * @param R
      * @param G
      * @param B
      * @return int
      */
-    public final static int getPixel(int R,int G,int B) {
+    public static int getPixel(int R, int G, int B) {
         R = min(255, max(0, R));
         G = min(255, max(0, G));
         B = min(255, max(0, B));
+        return 0xFF000000 | R << 16 | G << 8 | B;
+    }
+
+    /**
+     * Get compozite RGB triplet from normalized vector (double, double, double)
+     * @param rd
+     * @param gd
+     * @param bd
+     * @return
+     */
+    public static int getPixel(double rd, double gd, double bd) {
+        int R = (int) (255.0 * min(1.0, max(0.0, rd)));
+        int G = (int) (255.0 * min(1.0, max(0.0, gd)));
+        int B = (int) (255.0 * min(1.0, max(0.0, bd)));
         return 0xFF000000 | R << 16 | G << 8 | B;
     }
 
@@ -527,7 +546,7 @@ public class Raster implements IRasterRGB,IPixelMatrix {
      * @param B
      * @return int
      */
-    public final static int getPixel(int R,int G,int B,int A) {
+    public final static int getPixel(int R, int G, int B, int A) {
         R = min(255, max(0, R));
         G = min(255, max(0, G));
         B = min(255, max(0, B));
@@ -795,9 +814,9 @@ public class Raster implements IRasterRGB,IPixelMatrix {
      * @return
      */
     public static int avgPixel(int color1, int color2, int color3) {
-        return getPixel((getRPixel(color1) + getRPixel(color2) + getRPixel(color3)) / 3,
-                        (getGPixel(color1) + getGPixel(color2) + getGPixel(color3)) / 3,
-                        (getBPixel(color1) + getBPixel(color2) + getBPixel(color3)) / 3);
+        return getPixel((getRPixel(color1) + getRPixel(color2) + getRPixel(color3)) / 3.0 / 255.0,
+                        (getGPixel(color1) + getGPixel(color2) + getGPixel(color3)) / 3.0 / 255.0,
+                        (getBPixel(color1) + getBPixel(color2) + getBPixel(color3)) / 3.0 / 255.0);
     }
 
     public static boolean isPixelWhite(int color) {

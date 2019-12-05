@@ -30,7 +30,7 @@ public class CanvasExtenderSimpleFilter extends GenericRasterFilter {
         Raster.copyImageIntoPos(src, dest, bs, bs);
         // Left
         for (int j = bs; j > 0; j--) {
-            for (int i = 1; i < yr - 1; i++) {
+            for (int i = 1 + bs; i < yr - 1 - bs; i++) {
                 int pixel1 = dest.getRGB(j, i - 1);
                 int pixel2 = dest.getRGB(j, i);
                 int pixel3 = dest.getRGB(j, i + 1);
@@ -41,7 +41,7 @@ public class CanvasExtenderSimpleFilter extends GenericRasterFilter {
 
         // Right
         for (int j = bs + x - 1; j < xr - 1; j++) {
-            for (int i = 1; i < yr - 1; i++) {
+            for (int i = 1 + bs; i < yr - 1 - bs; i++) {
                 int pixel1 = dest.getRGB(j, i - 1);
                 int pixel2 = dest.getRGB(j, i);
                 int pixel3 = dest.getRGB(j, i + 1);
@@ -52,7 +52,7 @@ public class CanvasExtenderSimpleFilter extends GenericRasterFilter {
 
         // Top
         for (int i = bs; i > 0; i--) {
-            for (int j = 1; j < xr - 1; j++) {
+            for (int j = 1 + bs; j < xr - 1 - bs; j++) {
                 int pixel1 = dest.getRGB(j - 1, i);
                 int pixel2 = dest.getRGB(j,     i);
                 int pixel3 = dest.getRGB(j + 1, i);
@@ -63,7 +63,7 @@ public class CanvasExtenderSimpleFilter extends GenericRasterFilter {
 
         // Bottom
         for (int i = y + bs; i < yr; i++) {
-            for (int j = 1; j < xr - 1; j++) {
+            for (int j = 1 + bs; j < xr - 1 - bs; j++) {
                 int pixel1 = dest.getRGB(j - 1, i - 1);
                 int pixel2 = dest.getRGB(j,     i - 1);
                 int pixel3 = dest.getRGB(j + 1, i - 1);

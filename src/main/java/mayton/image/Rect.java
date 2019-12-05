@@ -1,5 +1,6 @@
 package mayton.image;
 
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import javax.annotation.concurrent.Immutable;
 
@@ -11,34 +12,54 @@ public final class Rect {
     public final int x2;
     public final int y2;
 
+    @Contract(pure = true)
     public boolean isPointInRect(int x, int y){
-        return x >= x1 && x < x2 && y >= y1 && y < y2;
+        return x >= x1 &&
+               x <  x2 &&
+               y >= y1 &&
+               y <  y2;
     }
 
+    @Contract(pure = true)
     public boolean isPointInRect(@NotNull Point point){
         return point.x >= x1 && point.x < x2 && point.y >= y1 && point.y < y2;
     }
 
     // TODO: Implement
+    @Contract(pure = true)
     public static Rect intersect(@NotNull Rect r1,@NotNull Rect r2){
         throw new RuntimeException("Not implemented yet!");
     }
 
     // TODO: Implement
     @NotNull
+    @Contract(pure = true)
     public static Rect union(@NotNull Rect r1,@NotNull Rect r2){
         throw new RuntimeException("Not implemented yet!");
     }
 
     // TODO: Implement
+    @Contract(pure = true)
     public static boolean isPointInRect(@NotNull Point point, @NotNull Rect rect){
+        return rect.isPointInRect(point);
+    }
+
+    @Contract(pure = true)
+    public static boolean isRectInRect(@NotNull Rect thisRect, @NotNull Rect that){
         throw new RuntimeException("Not implemented yet!");
     }
 
+    @Contract(pure = true)
+    public boolean isIn(@NotNull Rect rect) {
+        return x1 >= rect.x1 && y1 <= rect.y1 && x2 <= rect.x2 && y2 <= rect.y2;
+    }
+
+    @Contract(pure = true)
     public static @NotNull Rect createSquare(int x1, int y1,int size){
         return new Rect(x1, y1, x1 + size, y1 + size);
     }
 
+    @Contract(pure = true)
     public static @NotNull Rect create8x8Square(int x1, int y1) {
         return new Rect(x1, y1, x1 + 8, y1 + 8);
     }

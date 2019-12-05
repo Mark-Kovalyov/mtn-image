@@ -23,7 +23,7 @@ public class CanvasExtenderSimpleFilterTest {
     public void test() throws IOException {
         GenericRasterFilter canvasExtenderFilter = new CanvasExtenderSimpleFilter();
         Map<String, Object> params = new HashMap<>();
-        params.put("borderSize", 64);
+        params.put("borderSize", 256);
 
         BufferedImage result = canvasExtenderFilter.doFilter(ImageIO.read(
                 new FileInputStream(
