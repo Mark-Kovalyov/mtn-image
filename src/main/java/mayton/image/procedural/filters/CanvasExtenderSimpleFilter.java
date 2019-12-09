@@ -7,12 +7,14 @@ import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.annotation.concurrent.ThreadSafe;
 import java.awt.image.BufferedImage;
 import java.util.Collections;
 import java.util.Map;
 
 import static com.google.common.base.Preconditions.checkArgument;
 
+@ThreadSafe
 public class CanvasExtenderSimpleFilter extends GenericRasterFilter {
 
     static Logger logger = LoggerFactory.getLogger(CanvasExtenderSimpleFilter.class);
@@ -71,16 +73,16 @@ public class CanvasExtenderSimpleFilter extends GenericRasterFilter {
                 dest.setRGB(j, i, res);
             }
         }
-
-
         // TODO: Implement all border directions
+        // brd=128; br= brd/2; B1= zeros(size(A0)+[brd,brd,0]);
+        //%% Инициализировать угловые вертикальные Усы
+        //for k= 1:3
+        //  B1(1:br, br+1:br+3, k)= A0(1,1,k);  B1(end-br-3+1:end,  br+1:br+3, k)= A0(end,1, k);
+        //end;
+        //for k= 1:3
+        //  B1(1:br, end-br-3+1:end-br, k)= A0(1,end,k);  B1(end-br-3+1:end, end-br-3+1:end-br, k)= A0(end,end, k);
+        //end;
         return dest;
-    }
-
-    @Override
-    public @NotNull Map<String, Pair<Class, Mandatority>> describeParameters() {
-        // TODO:
-        return Collections.emptyMap();
     }
 
 }

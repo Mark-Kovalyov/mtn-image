@@ -1,5 +1,7 @@
 package mayton.image;
 
+import mayton.image.iterators.IPixIterator;
+import mayton.image.iterators.LinearPixIterator;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Range;
 
@@ -165,13 +167,44 @@ public class Raster implements IRasterRGB,IPixelMatrix {
         }
     }
 
-    @Deprecated
+    /*@Deprecated
     public void copyFrameIntoPos(Raster sourceRastr, Rectangle sourceFrame, int xpos, int ypos) {
         assert sourceRastr != null;
         assert sourceFrame != null;
         for (int x = 0; x < sourceFrame.width; x++) {
             for (int y = 0; y < sourceFrame.height; y++) {
                 setPixel(x + xpos, y + ypos, sourceRastr.getPixel(x + sourceFrame.x, y + sourceFrame.y));
+            }
+        }
+    }*/
+
+    @NotNull
+    public static Rect rectFromImage(@NotNull BufferedImage image) {
+        return new Rect(0, 0, image.getWidth(), image.getHeight());
+    }
+
+    @NotNull
+    public static IPixIterator iteratorFromRect(@NotNull Rect rect) {
+        return new LinearPixIterator(rect.x1, rect.y1, rect.x2, rect.y2);
+    }
+
+    public static void copyRectImageIntoPos(@NotNull BufferedImage sourceImage, @NotNull Rect sourceRect,
+                                            @NotNull BufferedImage destImage, int xpos, int ypos) {
+        if (!sourceRect.isEmpty()) {
+            Rect sourceImageFullRect = rectFromImage(sourceImage);
+            if (Rect.intersect(sourceRect, sourceImageFullRect) == null || Rect.intersect(sourceRect, sourceImageFullRect).isEmpty()) {
+                return;
+            }
+            Rect destRect = new Rect(xpos, ypos, xpos + sourceRect.getWidth(), ypos + sourceRect.getHeight());
+            Rect destImageRect = rectFromImage(destImage);
+            if (Rect.intersect(destRect, destImageRect).isEmpty()) {
+                return;
+            }
+            IPixIterator iterator = iteratorFromRect(sourceRect);
+            IPixIterator iteratorDest = new LinearPixIterator(xpos, ypos, xpos + sourceRect.getWidth(), ypos + sourceRect.getHeight());
+            while (iterator.next() && iteratorDest.next()) {
+                int color = sourceImage.getRGB(iterator.getX(), iterator.getY());
+                destImage.setRGB(iteratorDest.getX(), iteratorDest.getY(), color);
             }
         }
     }

@@ -6,12 +6,12 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class LinearPixIteratorTest {
 
     @Test
-    public void testNext() {
+    public void testRect() {
 
         IPixIterator ipx = new LinearPixIterator(2, 2);
 
@@ -41,5 +41,25 @@ public class LinearPixIteratorTest {
         assertEquals(1, y);
 
     }
+
+    @Test
+    public void testSquare() {
+        IPixIterator ipx = new LinearPixIterator(2);
+        assertTrue(ipx.next());
+        assertTrue(ipx.next());
+        assertTrue(ipx.next());
+        assertTrue(ipx.next());
+        assertFalse(ipx.next());
+    }
+
+    @Test
+    public void testRectWithTranslate() {
+        IPixIterator ipx = new LinearPixIterator(3,5,7,9);
+        while(ipx.next()) {
+            System.out.printf("(%d,%d)\n", ipx.getX(), ipx.getY());
+        }
+    }
+
+
 
 }

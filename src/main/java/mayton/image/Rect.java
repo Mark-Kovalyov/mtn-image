@@ -2,6 +2,8 @@ package mayton.image;
 
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import javax.annotation.concurrent.Immutable;
 
 @Immutable
@@ -25,10 +27,20 @@ public final class Rect {
         return point.x >= x1 && point.x < x2 && point.y >= y1 && point.y < y2;
     }
 
-    // TODO: Implement
     @Contract(pure = true)
-    public static Rect intersect(@NotNull Rect r1,@NotNull Rect r2){
-        throw new RuntimeException("Not implemented yet!");
+    @Nullable
+    public static Rect intersect(@NotNull Rect a,@NotNull Rect b){
+        if (!isIntersect(a,b)) {
+            return null;
+        } else {
+            // todo
+            return new Rect(0,0,0,0);
+        }
+    }
+
+    @Contract(pure = true)
+    public static boolean isIntersect(@NotNull Rect a, @NotNull Rect b) {
+        return a.y1 < b.y2 || a.y2 > b.y1 || a.x2 < b.x1 || a.x1 > b.x2;
     }
 
     // TODO: Implement
@@ -77,6 +89,10 @@ public final class Rect {
 
     public int getHeight(){
         return y2 - y1;
+    }
+
+    public boolean isEmpty() {
+        return getHeight() == 0 && getWidth() == 0;
     }
 
     @Override
