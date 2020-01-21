@@ -3,11 +3,16 @@ package mayton.math;
 
 import org.jetbrains.annotations.NotNull;
 
+import javax.annotation.concurrent.Immutable;
+import javax.annotation.concurrent.ThreadSafe;
+
 import static java.lang.Math.sqrt;
 
-public class Quaternion extends Hypercomplex implements Comparable {
+@Immutable
+@ThreadSafe
+public final class Quaternion extends Hypercomplex {
 
-    public double a,b,c,d;
+    public final double a,b,c,d;
 
     public Quaternion(double a, double b, double c, double d) {
         this.a = a;
@@ -36,10 +41,10 @@ public class Quaternion extends Hypercomplex implements Comparable {
     @NotNull
     public static Quaternion mul(@NotNull Quaternion q1,@NotNull Quaternion q2) {
         return new Quaternion(
-                q1.a*q2.a + q1.a*q2.b + q1.a*q2.c + q1.a*q2.d,
-                q1.a*q2.b + q1.b*q2.a + q1.c*q2.d - q1.d*q2.c,
-                q1.a*q2.c + q1.b*q2.d + q1.a*q2.c + q1.d*q2.b,
-                q1.a*q2.d + q1.b*q2.c + q1.c*q2.b + q1.d*q2.a
+                q1.a * q2.a + q1.a * q2.b + q1.a * q2.c + q1.a * q2.d,
+                q1.a * q2.b + q1.b * q2.a + q1.c * q2.d - q1.d * q2.c,
+                q1.a * q2.c + q1.b * q2.d + q1.a * q2.c + q1.d * q2.b,
+                q1.a * q2.d + q1.b * q2.c + q1.c * q2.b + q1.d * q2.a
         );
         
     }
@@ -54,18 +59,6 @@ public class Quaternion extends Hypercomplex implements Comparable {
     public double getModule() {
         return sqrt(this.a * this.a + this.b * this.b + this.c * this.c + this.d * this.d);
     }
-
-    @Override
-    public double getArg() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public int compareTo(Object o) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-
 
 
 

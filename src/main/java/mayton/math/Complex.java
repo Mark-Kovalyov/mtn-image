@@ -2,13 +2,18 @@ package mayton.math;
 
 import org.jetbrains.annotations.NotNull;
 
+import javax.annotation.concurrent.Immutable;
+import javax.annotation.concurrent.ThreadSafe;
+
 import static java.lang.Math.atan2;
 import static java.lang.Math.hypot;
 
-public class Complex extends Hypercomplex implements Comparable {
+@Immutable
+@ThreadSafe
+public final class Complex extends Hypercomplex {
 
-    public double a;
-    public double b;
+    public final double a;
+    public final double b;
 
     @NotNull
     public static Complex sum(@NotNull Complex arg1,@NotNull Complex arg2) {
@@ -42,25 +47,18 @@ public class Complex extends Hypercomplex implements Comparable {
 
     public void mul(Complex arg) {
         Complex prod = mul(this, arg);
-        a = prod.a;
-        b = prod.b;
+        /*a = prod.a;
+        b = prod.b;*/
     }
 
     public void div(Complex p) {
         Complex temp = div(this, p);
-        this.a = temp.a;
-        this.b = temp.b;
+        /*this.a = temp.a;
+        this.b = temp.b;*/
     }
 
-    public void inverse() {
-        a = -a;
-        b = -b;
-    }
 
-    public void add(@NotNull Complex c) {
-        this.a += c.a;
-        this.b += c.b;
-    }
+
 
     public double getArg() {
         return atan2(b, a);

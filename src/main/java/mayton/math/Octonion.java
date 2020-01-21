@@ -1,7 +1,11 @@
 package mayton.math;
 
+import javax.annotation.concurrent.Immutable;
+import javax.annotation.concurrent.ThreadSafe;
 
-public class Octonion extends Hypercomplex implements Cloneable {
+@Immutable
+@ThreadSafe
+public final class Octonion extends Hypercomplex {
 
     public double a;
     public double b;
@@ -58,12 +62,8 @@ public class Octonion extends Hypercomplex implements Cloneable {
 
     @Override
     public double getModule() {
-        return Math.sqrt(a*a+b*b+c*c+d*d+e*e+f*f+g*g+h*h);
+        return Math.sqrt(a * a + b * b + c * c + d * d + e * e + f * f + g * g + h * h);
     }
 
-    @Override
-    public double getArg() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
 
 }

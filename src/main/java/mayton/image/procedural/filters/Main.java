@@ -27,6 +27,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Arrays;
+import java.util.Properties;
 
 public class Main {
 
@@ -54,7 +55,10 @@ public class Main {
 
         Rect mainRect = new Rect(0,0,x,y);
 
-        File sourceFolder = new File("/storage/sql.ru/alibek/c1_29");
+        Properties properties = new Properties();
+        properties.load(new FileInputStream("sensitive.properties"));
+
+        File sourceFolder = new File(properties.getProperty("filters.main.src"));
         for(File file : sourceFolder.listFiles()) {
             String path = file.getAbsolutePath();
             logger.info(":: path = {}", path);

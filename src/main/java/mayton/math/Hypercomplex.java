@@ -6,11 +6,11 @@
 package mayton.math;
 
 
+import org.jetbrains.annotations.Contract;
+
 public abstract class Hypercomplex {
 
+    @Contract(pure = true)
     public abstract double getModule();
-
-    public abstract double getArg();
-
 
 }

@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>mayton.libs</groupId>
   <artifactId>image</artifactId>
-  <version>1.1</version>
+  <version>1.2</version>
   <name>${project.artifactId}</name>
   <description>Mayton's graphics library</description>
   <inceptionYear>2018</inceptionYear>

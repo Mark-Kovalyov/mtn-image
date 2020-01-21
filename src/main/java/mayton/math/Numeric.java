@@ -10,7 +10,6 @@ import javax.annotation.concurrent.ThreadSafe;
 public class Numeric {
 
     private Numeric(){
-
     }
 
     public static double pow2(double d) {
@@ -28,7 +27,7 @@ public class Numeric {
      * @return
      */
     public static double log2(double x) {
-        assert (x >= 0.0d);
+        assert x >= 0.0d;
         return Math.log(x) / Math.log(2.0);
     }
 
@@ -51,7 +50,7 @@ public class Numeric {
      * @throws java.lang.IllegalArgumentException
      */
     public static long fact(long x) throws IllegalArgumentException {
-        assert (x >= 0);
+        assert x >= 0;
         if (x == 0) {
             return 1;
         }
@@ -74,8 +73,8 @@ public class Numeric {
      * @throws IllegalArgumentException
      */
     public static long subFact(long x1, long x2) throws IllegalArgumentException {
-        assert (x1 <= x2);
-        if ((x1 <= 0) || (x2 <= 0)) {
+        assert x1 <= x2;
+        if (x1 <= 0 || x2 <= 0) {
             throw new IllegalArgumentException();
         }
         if (x1 == x2) {
@@ -98,9 +97,9 @@ public class Numeric {
      * @return
      */
     public static long permutation(long n, long k) {
-        assert (n > k);
-        assert (n >= 0);
-        assert (k >= 0);
+        assert n > k;
+        assert n >= 0;
+        assert k >= 0;
         return fact(n) / (fact(k) * fact(n - k));
         // 3! /
         //return subFact(m+1,n)/fact(n-m);
