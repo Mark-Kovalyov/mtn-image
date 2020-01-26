@@ -41,6 +41,10 @@ public class Vector extends Hypercomplex{
         return this.prod(1.0 / sqrt(this.sprod(this)));
     }
 
+    public @NotNull Vector negative() {
+        return new Vector(-x, -y, -z);
+    }
+
     @Override
     public double getModule() {
         return sqrt(x * x + y * y + z * z);
