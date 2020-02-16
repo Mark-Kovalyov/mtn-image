@@ -1,5 +1,10 @@
 package mayton.image.procedural.textures;
 
+import mayton.image.procedural.IProceduralTexture;
+import mayton.math.IMatrix;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Map;
 import java.util.Random;
 
 import static java.lang.Math.floor;
@@ -47,7 +52,7 @@ import static java.lang.Math.floor;
  * <p>
  * <p>Lastly we just have rectify and displace which we have dealt with already. displace just calcualtes a random displacement based on the size of the rectangle and the roughness.</p>
  */
-public class PlasmaFractal {
+public class PlasmaFractal implements IProceduralTexture {
 
     public double gRoughness;
     public double gBigSize;
@@ -130,5 +135,11 @@ public class PlasmaFractal {
     private double displace(double SmallSize) {
         double Max = SmallSize / gBigSize * gRoughness;
         return (rnd.nextDouble() - 0.5) * Max;
+    }
+
+    @Override
+    public @NotNull IMatrix generate(int size, @NotNull Map<String, String> parameters) {
+        // TODO: Implement
+        return null;
     }
 }

@@ -78,9 +78,6 @@ public class LinearPixIterator implements IPixIterator {
 
 	@Override
 	public String toString() {
-		return "LinearPixIterator{" +
-				"x=" + x +
-				", y=" + y +
-				'}';
+		return "LinearPixIterator{ x=" + x + ", y=" + y + '}';
 	}
 }
