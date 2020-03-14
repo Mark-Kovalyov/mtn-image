@@ -19,7 +19,7 @@ public class QuantumFilter extends GenericRasterFilter {
             int color = source.getRGB(linearPixIterator.getX(), linearPixIterator.getY());
             double brightness = Raster.getYPixelDouble(color);
             if (brightness < 0.25) {
-                color = 
+                // TODO
             }
         }
         return dest;
