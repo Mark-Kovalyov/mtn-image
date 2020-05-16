@@ -4,6 +4,7 @@ import mayton.image.Raster;
 import mayton.math.IMatrix;
 import mayton.math.ISize;
 import mayton.math.Matrix;
+import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.tuple.Triple;
 
 import java.awt.image.BufferedImage;
@@ -16,9 +17,11 @@ import java.util.function.Function;
  * x = [0..π]
  * y = [0..R]
  *
+ * Уравнение прямой
+ *
  *
  */
-public class HoughAnalyzer implements Function<Triple<BufferedImage, ISize, Properties>, IMatrix> {
+public class HoughAnalyzer implements Function<Pair<BufferedImage, Properties>, BufferedImage> {
 
     private static final double π = Math.PI;
 
@@ -31,13 +34,15 @@ public class HoughAnalyzer implements Function<Triple<BufferedImage, ISize, Prop
     }
 
     @Override
-    public IMatrix apply(Triple<BufferedImage, ISize, Properties> bufferedImageRectPair) {
+    public BufferedImage apply(Pair<BufferedImage, Properties> bufferedImageRectPair) {
         IMatrix matrix = new Matrix();
-        Properties props = bufferedImageRectPair.getRight();
         BufferedImage image = bufferedImageRectPair.getLeft();
-        ISize size = bufferedImageRectPair.getMiddle();
-        int w = size.getX();
-        int h = size.getY();
+        BufferedImage out = new BufferedImage(512, 512, BufferedImage.TYPE_BYTE_GRAY);
+        Properties props = bufferedImageRectPair.getRight();
+
+        //ISize size = bufferedImageRectPair.getMiddle();
+        int w = image.getWidth();
+        int h = image.getHeight();
 
         //
         for (int x = 0; x < w; x++) {
@@ -48,6 +53,6 @@ public class HoughAnalyzer implements Function<Triple<BufferedImage, ISize, Prop
             }
         }
 
-        return matrix;
+        return out;
     }
 }
