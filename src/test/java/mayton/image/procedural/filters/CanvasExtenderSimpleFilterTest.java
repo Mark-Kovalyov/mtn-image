@@ -1,6 +1,7 @@
 package mayton.image.procedural.filters;
 
 import mayton.image.GenericRasterFilter;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import javax.imageio.ImageIO;
@@ -20,6 +21,7 @@ import static org.junit.Assert.assertNotNull;
 public class CanvasExtenderSimpleFilterTest {
 
     @Test
+    @Ignore
     public void test() throws IOException {
         GenericRasterFilter canvasExtenderFilter = new CanvasExtenderSimpleFilter();
         Map<String, Object> params = new HashMap<>();
@@ -27,7 +29,7 @@ public class CanvasExtenderSimpleFilterTest {
 
         BufferedImage result = canvasExtenderFilter.doFilter(ImageIO.read(
                 new FileInputStream(
-                        "/home/mayton/git/mtn-image/src/test/resources/color-bars-600.png"
+                        "........." // TODO: add with sensitive
                 )), params);
 
 

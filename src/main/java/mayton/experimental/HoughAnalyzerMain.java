@@ -15,7 +15,7 @@ public class HoughAnalyzerMain {
 
     public static void drawTestImage() {
         BufferedImage i = new BufferedImage(512,512,BufferedImage.TYPE_INT_ARGB);
-        ImageIO.write(result, "PNG", new FileOutputStream("/documents/image-processing/Color.Images/test-img.png"));
+        //ImageIO.write(result, "PNG", new FileOutputStream("..../test-img.png")); // TODO: add with sensitive
     }
 
     public static void main(String[] args) throws IOException {
@@ -27,11 +27,11 @@ public class HoughAnalyzerMain {
         properties.put("houghRect", houghRect);
         BufferedImage result = houghAnalyzer.apply(
                 ImmutablePair.of(
-                        ImageIO.read(new FileInputStream("/documents/image-processing/Color.Images/lena.ppm.png")),
+                        ImageIO.read(new FileInputStream("....../lena.ppm.png")), // TODO: add with sensitive
                         properties
                 ));
 
-        ImageIO.write(result, "PNG", new FileOutputStream("/documents/image-processing/Color.Images/lena-hough.png"));
+        ImageIO.write(result, "PNG", new FileOutputStream(".../lena-hough.png")); // TODO: add with sensitive
 
     }
 
