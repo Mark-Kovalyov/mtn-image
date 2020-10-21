@@ -3,8 +3,8 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>mayton.libs</groupId>
     <artifactId>image</artifactId>
-    <version>1.4</version>
-    <name>mtn-image-library 1.4</name>
+    <version>1.4.1</version>
+    <name>mtn-image-library 1.4.1</name>
     <description>Mayton's graphics library</description>
     <inceptionYear>2018</inceptionYear>
     <licenses>
@@ -34,9 +34,16 @@
         </dependency>
 
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.7.0</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.7.0</version>
             <scope>test</scope>
         </dependency>
 

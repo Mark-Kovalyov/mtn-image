@@ -5,18 +5,16 @@
 
 package mayton.image.iterators;
 
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
-import mayton.image.iterators.IPixIterator;
-import mayton.image.iterators.SpiralIterator;
-import org.junit.*;
-
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  *
  * @author mayton
  */
-public class SpiralIteratorTest {
+class SpiralIteratorTest {
 
     int[][] testdata = new int[][]{
            {16, 15, 14, 13, 12},
@@ -27,9 +25,9 @@ public class SpiralIteratorTest {
     };
 
 
-    @Ignore
+    @Disabled("Not implemented yet")
     @Test
-    public void testTrivial() {
+    void testTrivial() {
         IPixIterator ipx=new SpiralIterator(5);
         ipx.next();assertEquals("(2,2),0",ipx.toString());
         ipx.next();assertEquals("(3,2),1",ipx.toString());
@@ -39,9 +37,10 @@ public class SpiralIteratorTest {
         ipx.next();assertEquals("(1,2),5",ipx.toString());
         ipx.next();assertEquals("(1,3),6",ipx.toString());
     }
-    
+
+    @Disabled("Not implemented yet")
     @Test
-    public void test25x25() {
+    void test25x25() {
         IPixIterator ipx=new SpiralIterator(5);
         int xx=-1;
         int yy=-1;

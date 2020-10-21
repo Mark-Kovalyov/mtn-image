@@ -1,17 +1,13 @@
 package mayton.image.iterators;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class LinearPixIteratorTest {
+class LinearPixIteratorTest {
 
     @Test
-    public void testRect() {
+    void testRect() {
 
         IPixIterator ipx = new LinearPixIterator(2, 2);
 
@@ -43,7 +39,7 @@ public class LinearPixIteratorTest {
     }
 
     @Test
-    public void testSquare() {
+    void testSquare() {
         IPixIterator ipx = new LinearPixIterator(2);
         assertTrue(ipx.next());
         assertTrue(ipx.next());
@@ -53,7 +49,7 @@ public class LinearPixIteratorTest {
     }
 
     @Test
-    public void testRectWithTranslate() {
+    void testRectWithTranslate() {
         IPixIterator ipx = new LinearPixIterator(3,5,7,9);
         while(ipx.next()) {
             System.out.printf("(%d,%d)\n", ipx.getX(), ipx.getY());

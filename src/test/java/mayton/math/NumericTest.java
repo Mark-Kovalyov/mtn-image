@@ -5,13 +5,12 @@
 
 package mayton.math;
 
+import org.junit.jupiter.api.Test;
+
 import java.math.BigInteger;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 /**
  *
@@ -31,7 +30,7 @@ public class NumericTest {
         assertEquals((long)120, Numeric.fact((int)5));
     }
 
-    @Test(timeout=5000)
+    @Test
     public void testFact_long() {
         assertEquals((long)1, Numeric.fact((long)0));
         assertEquals((long)1, Numeric.fact((long)1));
@@ -41,7 +40,7 @@ public class NumericTest {
         assertEquals((long)120, Numeric.fact((long)5));
     }
 
-    @Test(timeout=5000)
+    @Test
     public void testsubFact()
     {
         assertEquals((long)1, Numeric.subFact(1, 1));
@@ -64,7 +63,7 @@ public class NumericTest {
         );
     }
 
-    @Test(timeout=5000)
+    @Test
     public void testSubFact()
     {
         assertEquals(1, Numeric.subFact(1, 1));
@@ -74,7 +73,7 @@ public class NumericTest {
     }
 
 
-    @Test(timeout=5000)
+    @Test
     public void testPermutation() {
         assertEquals(6, Numeric.permutation(4, 2));
 

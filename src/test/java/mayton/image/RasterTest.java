@@ -1,10 +1,9 @@
 package mayton.image;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.*;
-import org.junit.Ignore;
-
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RasterTest {
     
@@ -55,7 +54,7 @@ public class RasterTest {
         assertEquals("YUV(0,0,0)", Raster.getYUVTextSignature(color));
     }
 
-    @Ignore
+    @Disabled("I do not a reason!")
     @Test
     public void testGetVPixelDouble_double() {
         assertEquals(1.0,Raster.getVPixelDouble(0xFFFFFFFF),0.01);

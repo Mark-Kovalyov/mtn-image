@@ -1,7 +1,7 @@
 package mayton.image.procedural.filters;
 
 import mayton.image.GenericRasterFilter;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -14,12 +14,12 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-public class CanvasExtenderMirrorFilterTest {
+class CanvasExtenderMirrorFilterTest {
 
     @Test
-    public void test() throws IOException {
+    void test() throws IOException {
         GenericRasterFilter canvasExtenderFilter = new CanvasExtenderMirrorFilter();
         Map<String, Object> params = new HashMap<>();
         params.put("borderSize", 64);

@@ -1,9 +1,10 @@
 package mayton.mayton.math;
 
 import mayton.math.Utils;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class UtilsTest {
 
@@ -16,9 +17,11 @@ public class UtilsTest {
         assertEquals(4, Utils.clp2(4));
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testClp2Exceptions() {
-        Utils.clp2(-1);
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            Utils.clp2(-1);
+        });
     }
 
     @Test

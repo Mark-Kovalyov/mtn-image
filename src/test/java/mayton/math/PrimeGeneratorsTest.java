@@ -1,9 +1,9 @@
 package mayton.math;
 
-import mayton.math.*;
-import org.junit.*;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * @author mayton
@@ -19,18 +19,20 @@ public class PrimeGeneratorsTest {
     }
 
     @Test
+    @Disabled
     public void testSimple() {
-        /*assertEquals(2L, pgs.next());
-        assertEquals(3, pgs.getNext());
-        assertEquals(5, pgs.getNext());
-        assertEquals(7, pgs.getNext());
-        assertEquals(11, pgs.getNext());
+        assertEquals(2, pgs.next());
+        assertEquals(3, pgs.next());
+        assertEquals(5, pgs.next());
+        assertEquals(7, pgs.next());
+        assertEquals(11, pgs.next());
         pgs.reset();
-        assertEquals(2, pgs.getNext());*/
+        assertEquals(2, pgs.next());
     }
 
-    @Ignore
+
     @Test
+    @Disabled
     public void testFast() {
         /*
         assertEquals(2, pgf.getNext());
@@ -42,8 +44,8 @@ public class PrimeGeneratorsTest {
         assertEquals(2, pgf.getNext());*/
     }
 
-    @Ignore
     @Test
+    @Disabled
     public void complexTestWithComparison() {
         pgs.reset();
         pgf.reset();

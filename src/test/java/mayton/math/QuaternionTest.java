@@ -5,10 +5,10 @@
 
 package mayton.math;
 
-import mayton.math.*;
-import org.junit.*;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  *
@@ -36,8 +36,8 @@ public class QuaternionTest {
        assertEquals(q3.d,6.0d,0.0000000001d);
     }
 
-    @Ignore
     @Test
+    @Disabled
     public void testMul() {
        Quaternion q1=new Quaternion(1.0d,0.0d,0.0d,0.0d);
        Quaternion q2=new Quaternion(2.0d,2.0d,2.0d,2.0d);

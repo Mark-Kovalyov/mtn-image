@@ -1,13 +1,9 @@
 package mayton.image;
 
-import org.junit.FixMethodOrder;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.*;
-import static org.junit.runners.MethodSorters.NAME_ASCENDING;
+import static org.junit.jupiter.api.Assertions.*;
 
-@FixMethodOrder(NAME_ASCENDING)
 public class RectTest {
 
     //(-2,-3)       (5,-3)

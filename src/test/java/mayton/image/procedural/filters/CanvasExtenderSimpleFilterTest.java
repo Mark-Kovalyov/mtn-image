@@ -1,8 +1,9 @@
 package mayton.image.procedural.filters;
 
 import mayton.image.GenericRasterFilter;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -16,12 +17,12 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class CanvasExtenderSimpleFilterTest {
 
     @Test
-    @Ignore
+    @Disabled("Doesnt work")
     public void test() throws IOException {
         GenericRasterFilter canvasExtenderFilter = new CanvasExtenderSimpleFilter();
         Map<String, Object> params = new HashMap<>();

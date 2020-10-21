@@ -2,25 +2,24 @@ package mayton.image.iterators;
 
 import mayton.image.Point;
 import org.apache.log4j.PropertyConfigurator;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.annotation.concurrent.NotThreadSafe;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-@NotThreadSafe
-public class GilbertPixelIteratorTest {
+class GilbertPixelIteratorTest {
 
-    @BeforeClass
-    public static void beforeClass() {
+    @BeforeAll
+    static void beforeClass() {
         PropertyConfigurator.configure(System.getProperty("user.dir") + "/src/test/resources/log4.properties");
     }
 
     @Test
-    public void testNext1024x1024() {
+    void testNext1024x1024() {
         GilbertPixelIterator instance = new GilbertPixelIterator(1024);
         int cnt = 0;
         while (instance.next()) {
@@ -30,7 +29,7 @@ public class GilbertPixelIteratorTest {
     }
 
     @Test
-    public void testNext4x4() {
+    void testNext4x4() {
         GilbertPixelIterator instance = new GilbertPixelIterator(4);
         assertTrue(instance.next());
         assertEquals("(0,0)", new Point(instance.getX(),instance.getY()).toString());

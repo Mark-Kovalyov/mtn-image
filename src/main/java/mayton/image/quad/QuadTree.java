@@ -1,11 +1,8 @@
 package mayton.image.quad;
 
-import mayton.image.Rect;
+public class QuadTree<T> {
 
-import java.util.Iterator;
-import java.util.function.Predicate;
-
-public interface QuadTree {
+    private QuadNode<T> root;
 
 
 
