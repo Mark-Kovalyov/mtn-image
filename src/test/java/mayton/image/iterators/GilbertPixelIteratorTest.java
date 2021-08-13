@@ -3,14 +3,12 @@ package mayton.image.iterators;
 import mayton.image.Point;
 import org.apache.log4j.PropertyConfigurator;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import javax.annotation.concurrent.NotThreadSafe;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@Tag("slow")
 class GilbertPixelIteratorTest {
 
     @BeforeAll

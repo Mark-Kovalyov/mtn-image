@@ -342,38 +342,33 @@ public class Raster implements IRasterRGB,IPixelMatrix {
     }
 
     /**
-     * Получнить упакованное значение (RGB) из вектора (H,S,V)
-     * @param H = [0..1)
-     * @param S = [0..1)
-     * @param V = [0..1)
+     * Получнить упакованное значение (RGB) из вектора (h,s,v)
+     * @param h = [0..1]
+     * @param s = [0..1]
+     * @param v = [0..1]
      * @return
      */
-    public static int getPixelFromHSVDouble(double H, double S, double V) {
-        assert H >= 0.0 && H < 1.0;
-        assert S >= 0.0 && S < 1.0;
-        assert V >= 0.0 && V < 1.0;
-        int r ;
-        int g ;
-        int b ;
-        double hh, p, q, t, ff;
+    public static int getPixelFromHSVDouble(double h, double s, double v) {
+        assert h >= 0.0 && h <= 1.0;
+        assert s >= 0.0 && s <= 1.0;
+        assert v >= 0.0 && v <= 1.0;
+        int r;
+        int g;
+        int b;
         int i;
-        if (S <= 0.0) {
-            r = (int) (255.0 * V);
-            g = (int) (255.0 * V);
-            b = (int) (255.0 * V);
+        if (s == 0.0) {
+            r = (int) (255.0 * v);
+            g = (int) (255.0 * v);
+            b = (int) (255.0 * v);
             return 0xFF000000 | r << 16 | g << 8 | b;
         }
-        hh = H;
-        if (hh >= 360.0) {
-            hh = 0.0;
-        }
-        hh /= 60.0;
-        i = (int) hh;
-        ff = hh - i;
-        p = V * (1.0 - S);
-        q = V * (1.0 - (S * ff));
-        t = V * (1.0 - (S * (1.0 - ff)));
-        int vint = (int) (255.0 * V);
+        h *= 6.0;
+        i = (int) h;
+        double ff = h - i;
+        double p = v * (1.0 - s);
+        double q = v * (1.0 - (s * ff));
+        double t = v * (1.0 - (s * (1.0 - ff)));
+        int vint = (int) (255.0 * v);
         int tint = (int) (255.0 * t);
         int pint = (int) (255.0 * p);
         int qint = (int) (255.0 * q);
@@ -393,7 +388,6 @@ public class Raster implements IRasterRGB,IPixelMatrix {
                 g = vint;
                 b = tint;
                 break;
-
             case 3:
                 r = pint;
                 g = qint;
@@ -411,7 +405,9 @@ public class Raster implements IRasterRGB,IPixelMatrix {
                 b = qint;
                 break;
         }
-        // TODO: Implement
+        assert r >= 0 && r < 256;
+        assert g >= 0 && g < 256;
+        assert b >= 0 && b < 256;
         return 0xFF000000 | r << 16 | g << 8 | b;
     }
 
