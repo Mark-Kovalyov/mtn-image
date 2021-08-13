@@ -2,6 +2,7 @@ package mayton.image.procedural.filters;
 
 import mayton.image.GenericRasterFilter;
 import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 
@@ -22,6 +23,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 public class CanvasExtenderSimpleFilterTest {
 
     @Test
+    @Tag("file")
     @Disabled("Doesnt work")
     public void test() throws IOException {
         GenericRasterFilter canvasExtenderFilter = new CanvasExtenderSimpleFilter();

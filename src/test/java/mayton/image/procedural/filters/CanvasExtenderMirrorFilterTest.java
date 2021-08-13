@@ -1,6 +1,7 @@
 package mayton.image.procedural.filters;
 
 import mayton.image.GenericRasterFilter;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import javax.imageio.ImageIO;
@@ -19,6 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 class CanvasExtenderMirrorFilterTest {
 
     @Test
+    @Tag("file")
     void test() throws IOException {
         GenericRasterFilter canvasExtenderFilter = new CanvasExtenderMirrorFilter();
         Map<String, Object> params = new HashMap<>();
