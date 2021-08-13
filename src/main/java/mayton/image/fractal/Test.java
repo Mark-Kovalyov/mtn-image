@@ -37,7 +37,7 @@ public class Test {
     }
 
     public static void main(String[] args) throws Exception {
-        String file = "c:\\001-1949";
+        String file = "001-1949";
         String ext = ".bmp";
         BitmapImportFilter rif = BitmapImportFilter.createInstance();
 
@@ -118,9 +118,9 @@ public class Test {
             f.close();
         }
         bef = BitmapExportFilter.createInstance();
-        //bef.export(r2,new FileOutputStream("c:\\lena_y.bmp"));
-        //bef.export(U_layer,new FileOutputStream("c:\\lena_U_layer.bmp"));
-        //bef.export(V_layer,new FileOutputStream("c:\\lena_V_layer.bmp"));
+        //bef.export(r2,new FileOutputStream("lena_y.bmp"));
+        //bef.export(U_layer,new FileOutputStream("lena_U_layer.bmp"));
+        //bef.export(V_layer,new FileOutputStream("lena_V_layer.bmp"));
         bef.export(comp, new FileOutputStream(file + "_YUVRGB" + ext));
 
     }
