@@ -1,5 +1,6 @@
 package mayton.image.standard;
 
+import com.sun.source.tree.EmptyStatementTree;
 import mayton.image.Rect;
 import org.jetbrains.annotations.NotNull;
 
@@ -53,12 +54,17 @@ public enum Resolutions {
     CINEMA_2K_ANAMORPHIC(2048, 858, asList(ColorMode.COLOR_MODE_16M)),
     CINEMA_ACADEMY_2K_STANDARD(1828, 1332, asList(ColorMode.COLOR_MODE_16M)),
     CINEMA_ACADEMY_2K_FLAT(1998, 1080, asList(ColorMode.COLOR_MODE_16M)),
+
     // 4k
     CINEMA_ACADEMY_4K_STANDARD(3626, 2664, asList(ColorMode.COLOR_MODE_16M)),
     CINEMA_ACADEMY_4K_FLAT(3996, 2160, asList(ColorMode.COLOR_MODE_16M)),
     CINEMA_4K_ANAMORPHIC(4096, 1714, asList(ColorMode.COLOR_MODE_16M)),
     QUAD_4K(3840, 2160, asList(ColorMode.COLOR_MODE_16M)),              // 16:9
-    FULL_4K(4096, 2160, asList(ColorMode.COLOR_MODE_16M));
+    FULL_4K(4096, 2160, asList(ColorMode.COLOR_MODE_16M)),
+
+    // Display port:
+    DISPLAY_PORT_5K(5120, 2880, EMPTY_LIST),
+    DISPLAY_PORT_8K(7680, 4320, EMPTY_LIST);
 
     public final int x;
     public final int y;

@@ -49,9 +49,9 @@ public class RotateRecursive {
         }
     }
 
-    static String root = "c:/pics/enc/";
-    static String inputFile = "rama-sita.png";
-    static String outputFile = "rama-sita-rot.png";
+    static String root = "";
+    static String inputFile = "";
+    static String outputFile = "";
 
 
     public static void main(String[] args) throws Exception {
