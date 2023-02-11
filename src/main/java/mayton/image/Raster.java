@@ -63,7 +63,7 @@ import static java.lang.Math.sqrt;
  * @author mayton
  * @license http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License v3
  */
-
+@SuppressWarnings("java:S4274")
 public class Raster implements IRasterRGB,IPixelMatrix {
 
     public int X;
@@ -167,16 +167,13 @@ public class Raster implements IRasterRGB,IPixelMatrix {
         }
     }
 
-    /*@Deprecated
     public void copyFrameIntoPos(Raster sourceRastr, Rectangle sourceFrame, int xpos, int ypos) {
-        assert sourceRastr != null;
-        assert sourceFrame != null;
         for (int x = 0; x < sourceFrame.width; x++) {
             for (int y = 0; y < sourceFrame.height; y++) {
                 setPixel(x + xpos, y + ypos, sourceRastr.getPixel(x + sourceFrame.x, y + sourceFrame.y));
             }
         }
-    }*/
+    }
 
     @NotNull
     public static Rect rectFromImage(@NotNull BufferedImage image) {
@@ -746,16 +743,6 @@ public class Raster implements IRasterRGB,IPixelMatrix {
     }
 
     /**
-     * Клонирование растра
-     * @return
-     * @throws CloneNotSupportedException
-     */
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return new Raster(this);
-    }
-
-    /**
      * Получение дистанции между двумя цветами
      * @param color1 - упакованное (RGB)
      * @param color2 - упакованное (RGB)
@@ -849,7 +836,6 @@ public class Raster implements IRasterRGB,IPixelMatrix {
     }
 
     public static boolean isPixelWhite(int color) {
-        // TODO: Optimize
         return getVPixelDouble(color) > 0.5;
     }
 

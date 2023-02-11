@@ -7,14 +7,16 @@ import org.junit.jupiter.api.Test;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
+import java.math.BigDecimal;
+import java.math.MathContext;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 class RasterTest {
+
+    private static File tmpDir = new File("/tmp/mtn-image");
 
     public static Triple<Integer,Integer,Integer> fromYUVtoRGB(double r, double g, double b) {
         return Triple.of(0,0,0);
@@ -46,8 +48,37 @@ class RasterTest {
 
     @Test
     @Tag("file")
+     void compVisionScrambler() throws IOException {
+        BufferedImage src = ImageIO.read(new FileInputStream("src/main/resources/Nature_30.jpg"));
+        int W = src.getWidth();
+        int H = src.getHeight();
+        BufferedImage bufferedImage = new BufferedImage(3 * W, 2 * H, BufferedImage.TYPE_INT_RGB);
+         for (int y = 0; y < H ; y++) {
+             for (int x = 0; x < W; x++) {
+                 // Исходный RGB
+                 int rgb = src.getRGB(x, y);
+                 // Ребалансированный с подавлением
+
+                 // Проверка канала яркости
+                 double brightness = Raster.getYPixelDouble(rgb);
+                 int scrambled = Raster.getPixelFromHSVDouble(brightness, 1.0, 1.0);
+                 bufferedImage.setRGB(x, y, rgb);
+                 bufferedImage.setRGB(x + W, y, Raster.getPixel(brightness, brightness, brightness));
+                 bufferedImage.setRGB(x + 2 * W, y, scrambled);
+
+
+             }
+         }
+        tmpDir.mkdirs();
+        File tempFile = File.createTempFile("compVisionScrambler-", ".png", tmpDir);
+        ImageIO.write(bufferedImage, "PNG", new FileOutputStream(tempFile));
+    }
+
+    @Test
+    @Tag("file")
     void test() throws IOException {
-        File tempFile = File.createTempFile("mayton.image.RasterTest-", ".png");
+        tmpDir.mkdirs();
+        File tempFile = File.createTempFile("TestHSV-", ".png", tmpDir);
         int W = 800;
         int H = 600;
         BufferedImage bufferedImage = new BufferedImage(W, H, BufferedImage.TYPE_INT_RGB);

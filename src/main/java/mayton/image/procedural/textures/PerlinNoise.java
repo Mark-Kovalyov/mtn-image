@@ -22,6 +22,8 @@ import static java.lang.Math.*;
 @SuppressWarnings({"squid:CommentedOutCodeLine", "squid:S1135"})
 public class PerlinNoise implements IProceduralTexture {
 
+    private static File tmpDir = new File("/tmp/mtn-image");
+
     static double noise2D(double x, double y) {
         return noise2D((int) x, (int) y);
     }
@@ -135,7 +137,7 @@ public class PerlinNoise implements IProceduralTexture {
 
         IMatrix matrix = perlinNoise.generate(1024, parameters); // Size: 1024x1024, Num octaves = 3
         BufferedImage image = ImageUtils.matrixToGrayImage(matrix, true);
-        ImageIO.write(image, "PNG", File.createTempFile("perlinNoise", ".png", new File("tmp")));
+        ImageIO.write(image, "PNG", File.createTempFile("perlinNoise", ".png", tmpDir));
     }
 
 
