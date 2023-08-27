@@ -1,13 +1,10 @@
 package mayton.image.standard;
 
-import com.sun.source.tree.EmptyStatementTree;
 import mayton.image.Rect;
 import org.jetbrains.annotations.NotNull;
 
 import java.math.BigInteger;
-import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
 
 import static java.util.Arrays.asList;
 import static java.util.Collections.EMPTY_LIST;
